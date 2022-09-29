@@ -12,6 +12,7 @@ const Navbar = (props) => {
       </Link>
 
       <div className="nav__authLinks">
+      {/* ESTE ES EL MENU QUE SE MUESTRA CUANDO EL USUARIO INICIO SESION */}
         {props.user ? (
           <>
             <Link to={PATHS.PROTECTEDPAGE} className="authLink">
@@ -23,10 +24,10 @@ const Navbar = (props) => {
           </>
         ) : (
           <>
-            <Link to={PATHS.SIGNUPPAGE} className="authLink">
+            <Link to={"/auth/signup"} className="authLink">
               Signup
             </Link>
-            <Link to={PATHS.LOGINPAGE} className="authLink">
+            <Link to={"/auth/login"} className="authLink">
               Log In
             </Link>
           </>

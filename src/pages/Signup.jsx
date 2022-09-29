@@ -4,13 +4,17 @@ import { useNavigate } from "react-router-dom";
 import "./auth.css";
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
+import {FormControl,FormLabel, FormErrorMessage,Heading, Input, Button, Box, Center, useColorModeValue} from '@chakra-ui/react'
+import {ArrowForwardIcon} from '@chakra-ui/icons'
+
 
 export default function Signup({ authenticate }) {
   const [form, setForm] = useState({
     username: "",
+    email: "",
     password: "",
   });
-  const { username, password } = form;
+  const { username, email, password } = form;
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -23,6 +27,7 @@ export default function Signup({ authenticate }) {
     event.preventDefault();
     const credentials = {
       username,
+      email,
       password,
     };
     signup(credentials).then((res) => {
@@ -42,42 +47,69 @@ export default function Signup({ authenticate }) {
 
   return (
     <div>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleFormSubmission} className="auth__form">
-        <label htmlFor="input-username">Username</label>
-        <input
-          id="input-username"
-          type="text"
-          name="username"
-          placeholder="Text"
-          value={username}
-          onChange={handleInputChange}
-          required
-        />
+    <Center py={8}>
+      <Box
+          role={'group'}
+          p={3}
+          maxW={'500px'}
+          w={'full'}
+          bg={useColorModeValue('white', 'gray.800')}
+          boxShadow={'2xl'}
+          rounded={'lg'}
+          pos={'relative'}
+          zIndex={1}>
+            <div>
+              <Heading color="purple.700" mt="20px" mb="30px">Sign Up</Heading>
+              <form onSubmit={handleFormSubmission} className="auth__form">
+                <FormControl isRequired> 
+                  <FormLabel htmlFor="input-email" color="purple.700">Email address</FormLabel>
+                  <Input id="input-email" type='email' mb="15px"
+                  name="email"
+                  color='#D6BCFA'
+                  placeholder='example@email.com'
+                  _placeholder={{ color: 'inherit' }}
+                  value={email}
+                  onChange={handleInputChange}
+                  required/>
+                </FormControl>
+                <FormControl isRequired>
+                  <FormLabel htmlFor="input-username" color="purple.700">Username</FormLabel>
+                  <Input id="input-username" type='text' mb="15px"
+                  name="username"
+                  color='#D6BCFA'
+                  placeholder='Username'
+                  _placeholder={{ color: 'inherit' }}
+                  value={username}
+                  onChange={handleInputChange}
+                  required/>
+                </FormControl>
+                <FormControl isRequired>
+                  <FormLabel htmlFor="input-password" color="purple.700">Password</FormLabel>
+                  <Input id="input-password" type='text' mb="15px"
+                  name="password"
+                  color='#D6BCFA'
+                  placeholder='Password'
+                  _placeholder={{ color: 'inherit' }}
+                  value={password}
+                  onChange={handleInputChange}
+                  required
+                  minLength="8"
+                  />
+                </FormControl>
 
-        <label htmlFor="input-password">Password</label>
-        <input
-          id="input-password"
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={handleInputChange}
-          required
-          minLength="8"
-        />
-
-        {error && (
-          <div className="error-block">
-            <p>There was an error submiting the form:</p>
-            <p>{error.message}</p>
-          </div>
-        )}
-
-        <button className="button__submit" type="submit">
-          Submit
-        </button>
-      </form>
+                {error && (
+                  <div className="error-block">
+                    <p>There was an error submiting the form:</p>
+                    <p>{error.message}</p>
+                  </div>
+                )}
+                <Button className="button__submit" type="submit" rightIcon={<ArrowForwardIcon />} colorScheme='purple' variant='outline'>
+                  Submit
+                </Button>
+              </form>
+            </div>
+        </Box>
+      </Center>
     </div>
   );
 }
