@@ -14,7 +14,7 @@ import MainPage from "./pages/MainPage";
 import Profile from "./pages/Profile"
 import Projects from './pages/Projects'
 import Dashboard from './pages/Dashbard'
-import Backlog from './pages/Backlog'
+import MainBacklog from './pages/MainBacklog'
 import Pipeline from './pages/Pipeline'
 
 export default function App() {
@@ -74,7 +74,7 @@ export default function App() {
           <Route path="profile" element={<Profile  user={user} authenticate={authenticate}/>}/>
           <Route path="projects" element={<Projects  user={user} authenticate={authenticate}/>}/>
           <Route path="dashboard" element={<Dashboard  user={user} authenticate={authenticate}/>}/>
-          <Route path="backlog" element={<Backlog  user={user} authenticate={authenticate}/>}/>
+          <Route path="backlog" element={<MainBacklog  user={user} authenticate={authenticate}/>}/>
           <Route path="pipeline" element={<Pipeline  user={user} authenticate={authenticate}/>}/>
         </Route>
         <Route path="/auth/login" element={<LogIn authenticate={authenticate}/>}/>
