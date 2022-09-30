@@ -4,13 +4,14 @@ import "./Navbar.css";
 import * as PATHS from "../../utils/paths";
 import * as CONSTS from "../../utils/consts";
 import { Button } from "@chakra-ui/react";
-import { FiLogOut} from "react-icons/fi";
+import { FiLogIn, FiLogOut} from "react-icons/fi";
 
 const Navbar = (props) => {
   return (
     <navbar>
       <Link to={PATHS.HOMEPAGE} className="nav__projectName">
-        {CONSTS.CAPITALIZED_APP}
+      <img src="'../../logocalaai-light.png" alt="Cala App Logo" />
+
       </Link>
 
       <div className="nav__authLinks">
@@ -25,11 +26,17 @@ const Navbar = (props) => {
           </>
         ) : (
           <>
-            <Link to={"/auth/signup"} className="authLink">
-              Signup
+            <Link to={"/auth/signup"} className="authLink" ml='20px'>
+            <Button className="button__submit" onClick={props.handleLogout} 
+            colorScheme='white' variant='outline'>
+                  SIGNUP
+            </Button>
             </Link>
             <Link to={"/auth/login"} className="authLink">
-              Log In
+            <Button ml='10px' className="button__submit" onClick={props.handleLogout} 
+            rightIcon={<FiLogIn />} colorScheme='white' variant='outline'>
+                  LOGIN
+            </Button>
             </Link>
           </>
         )}

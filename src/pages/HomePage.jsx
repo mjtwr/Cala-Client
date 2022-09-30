@@ -1,4 +1,4 @@
-import logo from "../logo.svg";
+import logo from "../logocalaai-light.png";
 import "../App.css";
 
 function HomePage() {
