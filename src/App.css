@@ -69,5 +69,9 @@
 }
 .options{
   justify-content: space-between;
-
+}
+.pipelineCards{
+  display: flex;
+  flex-direction: row;
+  width: 25%;
 }

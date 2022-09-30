@@ -49,9 +49,9 @@ const PipelineCard = () => {
     },
   ];
   return (
-    <div className="backlogCard">
-      <Flex>
-        <Box p="4">
+    <div className="backlogCard" >
+      <Flex mr='15px'>
+        <Box p="4" >
           <div>
             <h1 className="feature">TO-DO</h1>
           </div>
