@@ -1,6 +1,5 @@
 import React from 'react'
 import { Center, Box, useColorModeValue, Grid, GridItem} from '@chakra-ui/react'
-import './styles.css'
 
 
 const ProjectsTable = (props) => {
