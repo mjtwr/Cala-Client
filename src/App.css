@@ -27,3 +27,13 @@
   background-image: '../public/covercala.png';
   background-size: cover;
 }
+.taskContent{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 5px;
+  margin-left: 30px;
+  margin-right: 30px;
+  text-align: center;
+  align-content: center;
+}

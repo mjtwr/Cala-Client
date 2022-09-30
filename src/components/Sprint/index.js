@@ -1,12 +1,7 @@
 import React from "react";
 import {
-  useColorModeValue,
-  Center,
   Box,
-  IconButton,
   Button,
-  Grid,
-  GridItem,
   Flex,
   Spacer,
 } from "@chakra-ui/react";
