@@ -8,9 +8,17 @@ import * as USER_HELPERS from "./utils/userToken";
 import HomePage from "./pages/HomePage";
 import LogIn from './pages/LogIn'
 import Signup from "./pages/Signup";
+import { Box, useBreakpointValue, Flex } from '@chakra-ui/react'
+import Sidebar from './components/Sidebar'
+import MainPage from "./pages/MainPage";
+import Profile from "./pages/Profile"
+import Projects from './pages/Projects'
+import Dashboard from './pages/Dashbard'
+import Backlog from './pages/Backlog'
+import Pipeline from './pages/Pipeline'
 
 export default function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -55,13 +63,23 @@ export default function App() {
   return (
     <div className="App lilac-bg">
       <Navbar handleLogout={handleLogout} user={user} />
+      
+     
       <Routes>
         {/* {routes({ user, authenticate, handleLogout }).map((route) => (
           <Route key={route.path} path={route.path} element={route.element} />
         ))} */}
         <Route path="/" element={<HomePage/>}/>
-        <Route path="/auth/login" element={<LogIn/>}/>
-        <Route path="/auth/signup" element={<Signup/>}/>
+        <Route path="/" element={<MainPage  user={user}/>}>
+          <Route path="profile" element={<Profile  user={user}/>}/>
+          <Route path="projects" element={<Projects  user={user}/>}/>
+          <Route path="dashboard" element={<Dashboard  user={user}/>}/>
+          <Route path="backlog" element={<Backlog  user={user}/>}/>
+          <Route path="pipeline" element={<Pipeline  user={user}/>}/>
+        </Route>
+        <Route path="/auth/login" element={<LogIn authenticate={authenticate}/>}/>
+        <Route path="/auth/signup" element={<Signup authenticate={authenticate}/>}/>
+        <Route path="/profile" element={<Profile user={user}/>}/>
       </Routes>
     </div>
   );
