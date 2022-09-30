@@ -18,9 +18,7 @@ const Pipeline = () => {
         zIndex={1}>
 
     <PipelineCard/>
-    <PipelineCard/>
-    <PipelineCard/>
-    <PipelineCard/>
+    
     </Box>
 
     </Center>
