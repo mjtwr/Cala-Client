@@ -15,10 +15,7 @@ const MainPage = (props) => {
   
    <Flex>
     <Sidebar {...props}/>
-    <h1>Chaparrito I💖u</h1>
-    <Flex w="1000px">
       <Outlet />
-    </Flex>
    </Flex>
    
   )

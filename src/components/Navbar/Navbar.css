@@ -18,9 +18,9 @@ navbar {
   transition: color 0.2s ease-in-out;
 }
 
-.authLink + .authLink {
+/* .authLink + .authLink {
   padding: 1em;
-}
+} */
 
 .authLink:hover {
   color: #805AD5;

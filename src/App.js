@@ -8,7 +8,7 @@ import * as USER_HELPERS from "./utils/userToken";
 import HomePage from "./pages/HomePage";
 import LogIn from './pages/LogIn'
 import Signup from "./pages/Signup";
-import { Box, useBreakpointValue, Flex } from '@chakra-ui/react'
+import { Box, useBreakpointValue, Flex, Grid } from '@chakra-ui/react'
 import Sidebar from './components/Sidebar'
 import MainPage from "./pages/MainPage";
 import Profile from "./pages/Profile"
@@ -70,12 +70,12 @@ export default function App() {
           <Route key={route.path} path={route.path} element={route.element} />
         ))} */}
         <Route path="/" element={<HomePage/>}/>
-        <Route path="/" element={<MainPage  user={user}/>}>
-          <Route path="profile" element={<Profile  user={user}/>}/>
-          <Route path="projects" element={<Projects  user={user}/>}/>
-          <Route path="dashboard" element={<Dashboard  user={user}/>}/>
-          <Route path="backlog" element={<Backlog  user={user}/>}/>
-          <Route path="pipeline" element={<Pipeline  user={user}/>}/>
+        <Route path="/" element={<MainPage  user={user} authenticate={authenticate}/>}>
+          <Route path="profile" element={<Profile  user={user} authenticate={authenticate}/>}/>
+          <Route path="projects" element={<Projects  user={user} authenticate={authenticate}/>}/>
+          <Route path="dashboard" element={<Dashboard  user={user} authenticate={authenticate}/>}/>
+          <Route path="backlog" element={<Backlog  user={user} authenticate={authenticate}/>}/>
+          <Route path="pipeline" element={<Pipeline  user={user} authenticate={authenticate}/>}/>
         </Route>
         <Route path="/auth/login" element={<LogIn authenticate={authenticate}/>}/>
         <Route path="/auth/signup" element={<Signup authenticate={authenticate}/>}/>

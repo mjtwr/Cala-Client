@@ -15,11 +15,9 @@ import React from 'react'
 const Profile = (props) => {
   return (
 
-          <Center py={6}>
+          <Center py={6} w={'full'}>
             <Box
-              maxW={'670px'}
-            //   w={'full'}
-            w="100%"
+             w={'70%'}
               bg={useColorModeValue('white', 'gray.800')}
               boxShadow={'2xl'}
               rounded={'md'}

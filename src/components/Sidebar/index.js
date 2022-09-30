@@ -23,10 +23,10 @@ const Sidebar = (props) => {
                         else changeNavSize("small")
                 }}
             />
-            <Link to={"/projects"} className="authLink" color='purple'>
+            <Link to={"/projects"} className="authLink">
                 <NavItem navSize={navSize} icon={FiHome} title="My Projects"/>
             </Link>
-            <Link to={"/dashboard"} className="authLink">
+            <Link to={"/dashboard"} className="authLink" >
                 <NavItem navSize={navSize} icon={FiGrid} title="Dashboard"/>
             </Link>
             <Link to={"/backlog"} className="authLink">
