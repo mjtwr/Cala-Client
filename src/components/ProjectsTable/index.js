@@ -1,63 +1,100 @@
-import React from 'react'
-import { Center, Box, useColorModeValue, Grid, GridItem} from '@chakra-ui/react'
+import React from "react";
+import {
+  Center,
+  Box,
+  useColorModeValue,
+  Grid,
+  GridItem, IconButton
+} from "@chakra-ui/react";
+import { FiEdit, FiTrash2 } from "react-icons/fi";
+import { useEffect, useState } from 'react';
+import axios from 'axios'
 
 
 const ProjectsTable = (props) => {
-  let projectsList = [
-    {title: "mj", 
-    description: "goal", 
-    date:"10/20l", 
-    user: "username", 
-    id:1}, 
-    {title: "mj", 
-    description: "goal", 
-    date:"10/20l", 
-    user: "username", 
-    id:2
-  }]
+  const {projectList} = props
+  const [data, setData] = useState({})
+  
+  useEffect(() => {
+    axios.get(`https://ironbnb-m3.herokuapp.com/apartments/${id}`)
+    .then(response => setData(response.data))
+    .catch(err => console.log(err))
+}, [])
+
 
   return (
     <Center py={8} width="100%">
-    <Box
-        role={'group'}
-        p={3} ml="0px" mr='30px'
-        height='100%'
-        w={'full'}
-        bg={useColorModeValue('white', 'gray.800')}
-        boxShadow={'2xl'}
-        rounded={'lg'}
-        pos={'relative'}
-        zIndex={1}>
+      <Box
+        role={"group"}
+        p={3}
+        ml="0px"
+        mr="30px"
+        height="100%"
+        w={"full"}
+        bg={useColorModeValue("white", "gray.800")}
+        boxShadow={"2xl"}
+        rounded={"lg"}
+        pos={"relative"}
+        zIndex={1}
+      >
         <div>
-          <h1 className='feature'>My Projects</h1>
+          <h1 className="feature">My Projects</h1>
         </div>
         <div>
-        <Grid templateColumns='repeat(5, 1fr)' gap={6}>
-          <GridItem w='100%' h='10'>Project</GridItem>
-          <GridItem w='100%' h='10'>Goal</GridItem>
-          <GridItem w='100%' h='10'>Created</GridItem>
-          <GridItem w='100%' h='10'>User</GridItem>
-          <GridItem w='100%' h='10'>Ops</GridItem>
-        </Grid>
-        <hr/>
+          <Grid templateColumns="repeat(5, 1fr)" gap={6}>
+            <GridItem w="100%" h="10" className="subtitle-grey">
+              Project
+            </GridItem>
+            <GridItem w="100%" h="10" className="subtitle-grey">
+              Goal
+            </GridItem>
+            <GridItem w="100%" h="10" className="subtitle-grey">
+              Created
+            </GridItem>
+            <GridItem w="100%" h="10" className="subtitle-grey">
+              User
+            </GridItem>
+            <GridItem w="100%" h="10" className="subtitle-grey"></GridItem>
+          </Grid>
+          <hr />
         </div>
-      {projectsList.map((props, i) => {
-        return <div>
-        <Grid templateColumns='repeat(5, 1fr)' gap={6}>
-          <GridItem w='100%' h='10'>{props.title}</GridItem>
-          <GridItem w='100%' h='10'>{props?.description}</GridItem>
-          <GridItem w='100%' h='10'>{props.date}</GridItem>
-          <GridItem w='100%' h='10'>{props.user}</GridItem>
-          <GridItem w='100%' h='10'>{props.id}</GridItem>
-        </Grid>
-        <hr/>
-        </div>
-      })}
-        
+        {projectList.map((project, i) => {
+          return (
+            <div className="projectList" key={project._id}>
+              <Grid templateColumns="repeat(5, 1fr)" gap={6}>
+                <GridItem w="100%" h="10">
+                  {project.title}
+                </GridItem>
+                <GridItem w="100%" h="15">
+                  {project?.description}
+                </GridItem>
+                <GridItem w="100%" h="12">
+                  {project.date}
+                </GridItem>
+                <GridItem w="100%" h="12">
+                  {project.user}
+                </GridItem>
+                <GridItem w="100%" h="12">
+                  <IconButton
+                    aria-label="Edit"
+                    backgroundColor='#FAF5FF'
+                    icon={<FiEdit />}
+                  />
+                  <IconButton
+                  color='red'
+                  backgroundColor='#FAF5FF'
+                    aria-label="Delete"
+                    icon={<FiTrash2 />}
+                  />
+                </GridItem>
+              </Grid>
+              <hr />
+            </div>
+          );
+        })}
       </Box>
-  </Center>
-  
-  )
-}
+    </Center>
+  );
+};
 
-export default ProjectsTable
+export default ProjectsTable;

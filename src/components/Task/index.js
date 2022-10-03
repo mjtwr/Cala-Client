@@ -1,6 +1,7 @@
 import React from 'react'
 import './styles.css'
 import { Center,  Grid, GridItem} from '@chakra-ui/react'
+import { FiMoreHorizontal } from "react-icons/fi";
 
 const Task = (props) => {
     
@@ -14,7 +15,7 @@ const Task = (props) => {
                     <GridItem w='100%' h='20'>{task.title}</GridItem>
                     <GridItem w='100%' h='20'> {task.priority}</GridItem>
                     <GridItem w='100%' h='20'>{task.user}</GridItem>
-                    <GridItem w='100%' h='20'>OOO</GridItem>
+                    <GridItem w='100%' h='20' icon={FiMoreHorizontal}>OOO-{props.origin}</GridItem>
                     </Grid>
             </div>
             

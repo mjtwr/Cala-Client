@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Button,
-  Flex,
-  Spacer,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Spacer } from "@chakra-ui/react";
 import Task from "../Task";
 import { FiPlus } from "react-icons/fi";
 
@@ -80,7 +75,8 @@ const Sprint = () => {
       {tasks.map((task, i) => {
         return (
           <div>
-            <Task />
+            <Task origin="sprint" />
+            <span>{`/tasks/${task._id}&origin=sprint`}</span>
           </div>
         );
       })}

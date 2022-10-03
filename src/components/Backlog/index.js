@@ -78,7 +78,10 @@ const Backlog = () => {
       {tasks.map((task, i) => {
         return (
           <div>
-            <Task />
+            <Task origin='backlog' />
+            {/* DELETE TASK FROM ORIGIN DETERMINED BY QUERY */}
+            <span>{`/tasks/${task._id}&origin=backlog`}</span>
+
           </div>
         );
       })}
