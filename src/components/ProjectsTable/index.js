@@ -4,23 +4,15 @@ import {
   Box,
   useColorModeValue,
   Grid,
-  GridItem, IconButton
+  GridItem,
+  IconButton,
 } from "@chakra-ui/react";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
-import { useEffect, useState } from 'react';
-import axios from 'axios'
-
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const ProjectsTable = (props) => {
-  const {projectList} = props
-  const [data, setData] = useState({})
-  
-  useEffect(() => {
-    axios.get(`https://ironbnb-m3.herokuapp.com/apartments/${id}`)
-    .then(response => setData(response.data))
-    .catch(err => console.log(err))
-}, [])
-
+  const { projectList } = props;
 
   return (
     <Center py={8} width="100%">
@@ -77,12 +69,12 @@ const ProjectsTable = (props) => {
                 <GridItem w="100%" h="12">
                   <IconButton
                     aria-label="Edit"
-                    backgroundColor='#FAF5FF'
+                    backgroundColor="#FAF5FF"
                     icon={<FiEdit />}
                   />
                   <IconButton
-                  color='red'
-                  backgroundColor='#FAF5FF'
+                    color="red"
+                    backgroundColor="#FAF5FF"
                     aria-label="Delete"
                     icon={<FiTrash2 />}
                   />

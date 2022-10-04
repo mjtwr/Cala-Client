@@ -1,41 +1,29 @@
-import React from 'react'
-import ProjectsTable from '../components/ProjectsTable'
+import React from "react";
+import ProjectsTable from "../components/ProjectsTable";
+import { createProject, getAllProjects } from "../services/services";
+import axios from 'axios'
+import { useEffect, useState } from "react";
+
 
 const Projects = (props) => {
-  let projectsList = [
-    {
-      title: "mj",
-      description: "goal",
-      date: "10/20l",
-      user: "username",
-      id: 1,
-    },
-    {
-      title: "mj",
-      description: "goal",
-      date: "10/20l",
-      user: "username",
-      id: 2,
-    }, {
-      title: "mj",
-      description: "goal",
-      date: "10/20l",
-      user: "username",
-      id: 3,
-    },
-    {
-      title: "mj",
-      description: "goal",
-      date: "10/20l",
-      user: "username",
-      id: 4,
-    }
-  ];
+  
 
-  console.log(props)
-  return (
-    <ProjectsTable projectList={projectsList}/>
-  )
-}
+  useEffect(() => {
+    console.log("CALLING API");
+   getAllProjects()
+    .then(response =>  
+      {console.log(response.data)
+        setProjectsList(response.data)})
+   
+    .catch(err => console.log(err))
+  }, []);
 
-export default Projects
+const [projectsList, setProjectsList] = useState([])
+
+  console.log(props);
+  return <div>
+    <ProjectsTable projectList={projectsList} />;
+  </div>
+};
+
+export default Projects;
