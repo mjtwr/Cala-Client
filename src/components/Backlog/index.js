@@ -71,7 +71,6 @@ const Backlog = () => {
           <div>
             <Task origin='backlog' key={task.id}/>
             {/* DELETE TASK FROM ORIGIN DETERMINED BY QUERY */}
-            <span>{`/tasks/${task._id}&origin=backlog`}</span>
 
           </div>
         );

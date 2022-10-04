@@ -76,7 +76,6 @@ const Sprint = () => {
         return (
           <div>
             <Task origin="sprint" />
-            <span>{`/tasks/${task._id}&origin=sprint`}</span>
           </div>
         );
       })}
