@@ -9,21 +9,21 @@ const Projects = (props) => {
   
 
   useEffect(() => {
-    console.log("CALLING API");
+    // console.log("CALLING API");
    getAllProjects()
     .then(response =>  
-      {console.log(response.data)
-        setProjectsList(response.data)})
+      // {console.log(response.data)
+        setProjectsList(response.data))
    
     .catch(err => console.log(err))
   }, []);
 
 const [projectsList, setProjectsList] = useState([])
 
-  console.log(props);
+  
   return <div>
 
-    <ProjectsTable projectList={projectsList} />;
+    <ProjectsTable projectList={projectsList}/>;
   </div>
 };
 

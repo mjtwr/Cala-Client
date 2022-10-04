@@ -36,6 +36,7 @@
   margin-right: 30px;
   text-align: center;
   align-content: center;
+  padding-top: 20px;
 }
 .insightContent{
   background-color: white;
@@ -108,4 +109,8 @@
   flex-direction: row;
   justify-content: flex-end;
   padding-right: 10px;
+}
+.modalContent{
+  display: flex;
+  flex-wrap: wrap;
 }

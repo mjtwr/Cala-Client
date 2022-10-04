@@ -1,22 +1,22 @@
 import React from "react";
 import {
-  Center, Spacer, Button,
+  Center, Spacer, 
   Box, Flex, 
   useColorModeValue,
   Grid,
   GridItem, useDisclosure,
-  IconButton,
+
 } from "@chakra-ui/react";
-import { FiEdit, FiTrash2, FiPlus } from "react-icons/fi";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import ProjectForm from "../ProjectForm";
-import ProjectEditForm from "../ProjectEditForm";
+// import { useEffect, useState } from "react";
+// import axios from "axios";
+import CreateProject from "../CreateProject";
+import EditTask from "../EditTask";
 import DeletePopUp from "../DeletePopUp";
+
 const ProjectsTable = (props) => {
   console.log("PROJECTTABLE PROPS", props)
   const { projectList } = props;
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Center py={8} width="100%">
@@ -43,7 +43,7 @@ const ProjectsTable = (props) => {
         <Spacer />
         <Box p="4">
           <div>
-           <ProjectForm/>
+           <CreateProject/>
           </div>
         </Box>
       </Flex>
@@ -83,8 +83,8 @@ const ProjectsTable = (props) => {
                   {project.user}
                 </GridItem>
                 <GridItem w="100%" h="12" className="options-btn" >
-                  <ProjectEditForm/>
-                  <DeletePopUp feature='project'/>
+                  <EditTask color-bg='white'/>
+                  <DeletePopUp feature='project' color-bg='white'/>
                 </GridItem>
               </Grid>
               <hr />

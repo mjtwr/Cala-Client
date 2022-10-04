@@ -1,7 +1,8 @@
 import React from 'react'
 import './styles.css'
 import { Center,  Grid, GridItem} from '@chakra-ui/react'
-import { FiMoreHorizontal } from "react-icons/fi";
+import EditTask from "../EditTask";
+import DeletePopUp from "../DeletePopUp";
 
 const Task = (props) => {
     
@@ -15,7 +16,10 @@ const Task = (props) => {
                     <GridItem w='100%' h='20'>{task.title}</GridItem>
                     <GridItem w='100%' h='20'> {task.priority}</GridItem>
                     <GridItem w='100%' h='20'>{task.user}</GridItem>
-                    <GridItem w='100%' h='20' icon={FiMoreHorizontal}>OOO-{props.origin}</GridItem>
+                    <GridItem w="100%" h="12" className="options-btn" >
+                  <EditTask/>
+                  <DeletePopUp feature='task'/>
+                </GridItem>
                     </Grid>
             </div>
             

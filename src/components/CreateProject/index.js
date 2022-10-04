@@ -16,7 +16,7 @@ import {
 import { FiPlus } from "react-icons/fi";
 
 
-const ProjectForm = () => {
+const CreateProject = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const initialRef = React.useRef(null);
@@ -63,4 +63,4 @@ const ProjectForm = () => {
   );
 };
 
-export default ProjectForm;
+export default CreateProject;

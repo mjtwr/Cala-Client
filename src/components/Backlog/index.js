@@ -1,8 +1,8 @@
 import React from "react";
-import {  Box, Flex, Spacer, Button } from "@chakra-ui/react";
+import {  Box, Flex, Spacer } from "@chakra-ui/react";
 import Task from "../Task";
 import './styles.css'
-import { FiPlus } from "react-icons/fi";
+import CreateTask from "../CreateTask";
 
 
 const Backlog = () => {
@@ -61,16 +61,7 @@ const Backlog = () => {
         <Spacer />
         <Box p="4">
           <div>
-            <Button
-              className="button__submit"
-              size="lg"
-              type="submit"
-              rightIcon={<FiPlus />}
-              colorScheme="purple"
-              variant="outline"
-            >
-              Task
-            </Button>
+            <CreateTask/>
           </div>
         </Box>
       </Flex>
@@ -78,7 +69,7 @@ const Backlog = () => {
       {tasks.map((task, i) => {
         return (
           <div>
-            <Task origin='backlog' />
+            <Task origin='backlog' key={task.id}/>
             {/* DELETE TASK FROM ORIGIN DETERMINED BY QUERY */}
             <span>{`/tasks/${task._id}&origin=backlog`}</span>
 
