@@ -10,10 +10,10 @@ const MainBacklog = () => {
   const [sprintsList, setSprintsList] = useState([]);
 
   useEffect(() => {
-    console.log("CALLING API");
+    // console.log("CALLING API");
     getSprints("633b31fb2bee9f56d96b71fa")
       .then((response) => {
-        console.log("RESPONSE SPRINT", response.data);
+        // console.log("RESPONSE SPRINT", response.data);
         setSprintsList(response.data.sprints);
       })
 

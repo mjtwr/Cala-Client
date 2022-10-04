@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -6,20 +6,26 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  FormLabel,
-  Input,
   ModalCloseButton,
   useDisclosure,
-  Button,
+  Button, 
   IconButton,
 } from "@chakra-ui/react";
 import {  FiTrash2} from "react-icons/fi";
 
 const DeletePopUp = (props) => {
-    const {feature} = props
+  // console.log('DEL PROJECT PROPS', props)
+  const {feature, projectId} = props
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   const initialRef = React.useRef(null);
+
+  const handleRemoveItem = (e) => {
+   const id = e.target.getAttribute("id")
+  //  console.log("ID", id)
+   props.handleDeleteProject(e, id)
+  //  Close popup?
+  //  console.log("CLICK")
+  };
 
   return (
     <>
@@ -30,7 +36,7 @@ const DeletePopUp = (props) => {
           onClick={onOpen}
           type="submit"
           color="red"
-          backgroundColor="white"
+          backgroundColor="#FAF5FF"
           icon={<FiTrash2 />}
           margin-top='-30px'
         />
@@ -45,10 +51,11 @@ const DeletePopUp = (props) => {
             </ModalBody>
 
             <ModalFooter>
-              <Button colorScheme="purple" mr={3}>
+              <Button colorScheme="purple" mr={3}
+              id={projectId} onClick={handleRemoveItem} >
                 Delete
               </Button>
-              <Button colorScheme='red' onClick={onClose}>Cancel</Button> {/* onClick={deleteProject}*/}
+              <Button colorScheme='red' onClick={onClose}>Cancel</Button> 
             </ModalFooter>
           </ModalContent>
         </Modal>

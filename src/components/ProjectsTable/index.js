@@ -1,22 +1,37 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Center, Spacer, 
   Box, Flex, 
   useColorModeValue,
   Grid,
-  GridItem, useDisclosure,
-
+  GridItem
 } from "@chakra-ui/react";
 // import { useEffect, useState } from "react";
 // import axios from "axios";
 import CreateProject from "../CreateProject";
 import EditTask from "../EditTask";
-import DeletePopUp from "../DeletePopUp";
+import DeleteProject from "../DeleteProject";
 
 const ProjectsTable = (props) => {
   console.log("PROJECTTABLE PROPS", props)
   const { projectList } = props;
-  // const { isOpen, onOpen, onClose } = useDisclosure();
+  const [deleteProject, setDeleteProject] = useState([]);
+
+ 
+
+  const handleDeleteProject = (e, id) => {
+    console.log("Reeceiving id child", id)
+    // console.log(projectList)
+    // console.log("handleeee", e.target);
+// let i = projectList.findIndex(project => project._id === id)
+// // console.log(i)
+
+// const left = projectList.slice(0, i)
+// const right = projectList.slice(i+1)
+props.handleDeleteProject(id)
+
+    console.log("LIST OF PROJECTS", projectList)
+  };
 
   return (
     <Center py={8} width="100%">
@@ -84,7 +99,7 @@ const ProjectsTable = (props) => {
                 </GridItem>
                 <GridItem w="100%" h="12" className="options-btn" >
                   <EditTask/>
-                  <DeletePopUp feature='project'/>
+                  <DeleteProject feature='project' projectId={project._id}  handleDeleteProject={ handleDeleteProject}/>
                 </GridItem>
               </Grid>
               <hr />

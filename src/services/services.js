@@ -32,6 +32,7 @@ const projectService = axios.create({
   baseURL: `http://localhost:5005/`,
 });
 
+// PROJECTS
 export function createProject(project) {
   return projectService
     .post("/projects", project, config)
@@ -44,7 +45,21 @@ export function getAllProjects() {
     .then(successStatus)
     .catch(internalServerError);
 }
+// /projects/633775ca0d870e7cdfafdf83
+export function updateProject(projectId) {
+  return projectService
+    .get(`/projects/${projectId}`, config)
+    .then(successStatus)
+    .catch(internalServerError);
+}
+export function deleteProject(projectId) {
+  return projectService
+    .get(`/projects/${projectId}`, config)
+    .then(successStatus)
+    .catch(internalServerError);
+}
 
+// BACKLOG
 ///projects/projectId/backlogs
 export function getBacklogTasks(projectId) {
   return projectService
@@ -53,9 +68,10 @@ export function getBacklogTasks(projectId) {
     .catch(internalServerError);
 }
 
+// SPRINTS
 // /sprints?projectId=633a5db299f8acab76adb830
 export function getSprints(projectId) {
-  console.log("SEND REQUEST ID", projectId)
+  // console.log("SEND REQUEST ID", projectId)
   return projectService
     .get(`/sprints?projectId=${projectId}`, config)
     .then(successStatus)
