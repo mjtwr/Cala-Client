@@ -13,29 +13,31 @@ import {
   Button,
   FormControl,
 } from "@chakra-ui/react";
+import { FiPlus } from "react-icons/fi";
+
 
 const ProjectForm = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const initialRef = React.useRef(null);
-  const finalRef = React.useRef(null);
 
   return (
     <>
-      <Button onClick={onOpen}>Open Modal</Button>
-      <Button ml={4} ref={finalRef}>
-        I'll receive focus on close
-      </Button>
+      <Button onClick={onOpen}   className="button__submit popupModal"
+              h='50px' w='200px'
+              type="submit"
+              rightIcon={<FiPlus />}
+              colorScheme="purple"
+              variant="outline">New </Button>
 
       <Modal
         initialFocusRef={initialRef}
-        finalFocusRef={finalRef}
         isOpen={isOpen}
         onClose={onClose}
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Edit Project</ModalHeader>
+          <ModalHeader>Create Project</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
@@ -44,7 +46,7 @@ const ProjectForm = () => {
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Description</FormLabel>
+              <FormLabel>Goal</FormLabel>
               <Input placeholder="description" />
             </FormControl>
           </ModalBody>

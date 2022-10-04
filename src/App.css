@@ -103,3 +103,9 @@
   font-weight: bolder;
   text-align: center;
 }
+.options-btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-right: 10px;
+}

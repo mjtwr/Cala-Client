@@ -22,6 +22,7 @@ const [projectsList, setProjectsList] = useState([])
 
   console.log(props);
   return <div>
+
     <ProjectsTable projectList={projectsList} />;
   </div>
 };
