@@ -14,6 +14,7 @@ import ProjectForm from "../ProjectForm";
 import ProjectEditForm from "../ProjectEditForm";
 import DeletePopUp from "../DeletePopUp";
 const ProjectsTable = (props) => {
+  console.log("PROJECTTABLE PROPS", props)
   const { projectList } = props;
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -76,7 +77,7 @@ const ProjectsTable = (props) => {
                   {project?.description}
                 </GridItem>
                 <GridItem w="100%" h="12">
-                  {project.date}
+                  {project.createdAt}
                 </GridItem>
                 <GridItem w="100%" h="12">
                   {project.user}
