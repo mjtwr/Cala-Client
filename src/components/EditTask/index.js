@@ -8,6 +8,7 @@ import {
   ModalBody,
   FormLabel,
   Input,
+  Select,
   ModalCloseButton,
   useDisclosure,
   Button,
@@ -38,20 +39,50 @@ const EditTask = () => {
           <ModalContent>
             <ModalHeader>New Task</ModalHeader>
             <ModalCloseButton />
-            <ModalBody pb={6}>
+            <ModalBody pb={6} className="modalContent">
               <FormControl>
                 <FormLabel>Title</FormLabel>
-                <Input ref={initialRef} placeholder="title" />
+                <Input ref={initialRef} placeholder="Title" />
               </FormControl>
 
               <FormControl mt={4}>
                 <FormLabel>Description</FormLabel>
-                <Input placeholder="description" />
+                <Input
+                  placeholder="
+              Description"
+                />
               </FormControl>
 
-            
+              <FormControl w="100px" mr="10px" mt="20px">
+                <Select placeholder="Type">
+                  <option>Task</option>
+                  <option>User Story</option>
+                  <option>Bug</option>
+                </Select>
+              </FormControl>
+              <FormControl w="120px" mr="10px" mt="20px">
+                <Select placeholder="Priority">
+                  <option>Low</option>
+                  <option>Medium</option>
+                  <option>High</option>
+                </Select>
+              </FormControl>
+              <FormControl w="140px" mr="10px" mt="20px">
+                <Select placeholder="Status">
+                  <option>To-Do</option>
+                  <option>In Progress</option>
+                  <option>Testing</option>
+                  <option>Done</option>
+                </Select>
+              </FormControl>
+              {/* <FormControl>
+              <DatePicker
+                placeholder="Date picker placeholder"
+                name="date"
+                onChange={(date: string) => console.log(date)}
+              />
+            </FormControl> */}
             </ModalBody>
-
             <ModalFooter>
               <Button colorScheme="purple" mr={3}>
                 Create

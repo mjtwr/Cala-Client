@@ -45,3 +45,10 @@ export function getAllProjects() {
     .catch(internalServerError);
 }
 
+///projects/projectId/backlogs
+export function getBacklogTasks(projectId) {
+  return projectService
+    .get(`/projects/${projectId}/backlogs`, config)
+    .then(successStatus)
+    .catch(internalServerError);
+}

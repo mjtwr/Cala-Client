@@ -1,11 +1,18 @@
 import React from "react";
-import {  Box, Flex, Spacer } from "@chakra-ui/react";
+import { Box, Flex, Spacer } from "@chakra-ui/react";
 import Task from "../Task";
-import './styles.css'
+import "./styles.css";
 import CreateTask from "../CreateTask";
 
+const Backlog = (props) => {
+  console.log("BACKLOG PROPS:", props);
 
-const Backlog = () => {
+  // let tasks = props.backlogTasksList.tasks;
+  //  if(props.backlogTasksList !== undefined){
+  //   console.log("holiiii")
+  //   tasks =  props.backlogTasksList.tasks
+  //  }
+  // console.log("TASKKKKS ", tasks);
   const tasks = [
     {
       type: "bug",
@@ -50,10 +57,11 @@ const Backlog = () => {
       id: "meklnl",
     },
   ];
+
   return (
     <div className="backlogCard">
-     <Flex mt='20px'>
-        <Box p="4" mr='60px'>
+      <Flex mt="20px">
+        <Box p="4" mr="60px">
           <div>
             <h1 className="feature">Backlog</h1>
           </div>
@@ -61,17 +69,16 @@ const Backlog = () => {
         <Spacer />
         <Box p="4">
           <div>
-            <CreateTask/>
+            <CreateTask />
           </div>
         </Box>
       </Flex>
-     
+
       {tasks.map((task, i) => {
         return (
           <div>
-            <Task origin='backlog' key={task.id}/>
+            <Task origin="backlog" key={task._id} />
             {/* DELETE TASK FROM ORIGIN DETERMINED BY QUERY */}
-
           </div>
         );
       })}

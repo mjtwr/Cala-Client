@@ -18,7 +18,7 @@ import {
 // import { DatePicker } from "chakra-ui-date-input"; no pude instalarla = error
 import { FiPlus } from "react-icons/fi";
 
-const CreateTask = () => {
+const CreateSprint = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const initialRef = React.useRef(null);
@@ -29,19 +29,19 @@ const CreateTask = () => {
         onClick={onOpen}
         className="button__submit popupModal"
         h="50px"
-        w="200px"
+        w="300px"
         type="submit"
         rightIcon={<FiPlus />}
         colorScheme="purple"
         variant="outline"
       >
-        New Task
+        Add Sprint
       </Button>
 
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Create Task</ModalHeader>
+          <ModalHeader>Create A New Sprint</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6} className="modalContent">
             <FormControl>
@@ -50,32 +50,17 @@ const CreateTask = () => {
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Description</FormLabel>
+              <FormLabel>Goal</FormLabel>
               <Input
                 placeholder="
               Description"
               />
             </FormControl>
 
-            <FormControl w="100px" mr="10px" mt="20px">
-              <Select placeholder="Type">
-                <option>Task</option>
-                <option>User Story</option>
-                <option>Bug</option>
-              </Select>
-            </FormControl>
-            <FormControl w="120px" mr="10px" mt="20px">
-              <Select placeholder="Priority">
-                <option>Low</option>
-                <option>Medium</option>
-                <option>High</option>
-              </Select>
-            </FormControl>
             <FormControl w="140px" mr="10px" mt="20px">
               <Select placeholder="Status">
-                <option>To-Do</option>
+                <option>Start</option>
                 <option>In Progress</option>
-                <option>Testing</option>
                 <option>Done</option>
               </Select>
             </FormControl>
@@ -90,7 +75,7 @@ const CreateTask = () => {
 
           <ModalFooter>
             <Button colorScheme="purple" mr={3}>
-              Create
+              Create Sprint
             </Button>
             <Button onClick={onClose} colorScheme="red">
               Cancel
@@ -102,4 +87,4 @@ const CreateTask = () => {
   );
 };
 
-export default CreateTask;
+export default CreateSprint;

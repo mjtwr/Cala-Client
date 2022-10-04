@@ -83,8 +83,8 @@ const ProjectsTable = (props) => {
                   {project.user}
                 </GridItem>
                 <GridItem w="100%" h="12" className="options-btn" >
-                  <EditTask color-bg='white'/>
-                  <DeletePopUp feature='project' color-bg='white'/>
+                  <EditTask/>
+                  <DeletePopUp feature='project'/>
                 </GridItem>
               </Grid>
               <hr />

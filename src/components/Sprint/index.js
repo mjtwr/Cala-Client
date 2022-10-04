@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Button, Flex, Spacer } from "@chakra-ui/react";
 import Task from "../Task";
 import { FiPlus } from "react-icons/fi";
+import CreateSprint from "../CreateSprint";
 
 const Sprint = () => {
   const tasks = [
@@ -59,23 +60,14 @@ const Sprint = () => {
         <Spacer />
         <Box p="4">
           <div>
-            <Button
-              className="button__submit"
-              size="lg"
-              type="submit"
-              rightIcon={<FiPlus />}
-              colorScheme="purple"
-              variant="outline"
-            >
-              Create
-            </Button>
+           <CreateSprint/>
           </div>
         </Box>
       </Flex>
       {tasks.map((task, i) => {
         return (
           <div>
-            <Task origin="sprint" />
+            <Task origin="sprint" key={task.id} />
           </div>
         );
       })}
