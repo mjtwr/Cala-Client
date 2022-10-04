@@ -1,7 +1,7 @@
-import React from 'react'
-import {Flex,Box,Spacer,Button} from '@chakra-ui/react'
+import React from "react";
+import { Flex, Box, Spacer, Button ,IconButton} from "@chakra-ui/react";
 import { FiMoreHorizontal } from "react-icons/fi";
-import Task from '../Task';
+import Task from "../Task";
 
 const PipelineCard = () => {
   const tasks = [
@@ -49,9 +49,9 @@ const PipelineCard = () => {
     },
   ];
   return (
-    <div className="backlogCard" >
-      <Flex mr='15px'>
-        <Box p="4" >
+      <div className="backlogCard">
+      <Flex>
+        <Box p="4">
           <div>
             <h1 className="feature">TO-DO</h1>
           </div>
@@ -59,16 +59,13 @@ const PipelineCard = () => {
         <Spacer />
         <Box p="4">
           <div>
-            <Button
-              className="button__submit"
-              size="lg"
-              type="submit"
-              rightIcon={<FiMoreHorizontal />}
+            <IconButton
               colorScheme="purple"
-              variant="outline"
-            >
-              Create
-            </Button>
+              variant='outline'
+              aria-label="Call Segun"
+              size="sm"
+              icon={<FiMoreHorizontal />}
+            />
           </div>
         </Box>
       </Flex>
@@ -82,4 +79,4 @@ const PipelineCard = () => {
     </div>
   );
 };
-export default PipelineCard
+export default PipelineCard;

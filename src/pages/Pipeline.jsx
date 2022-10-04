@@ -5,11 +5,11 @@ import { useColorModeValue, Center, Box } from "@chakra-ui/react";
 const Pipeline = (props) => {
   const cards = [{title: "TO-DO", id:1}, {title: "In Progress", id:2},{title: "Testing", id:3},{title: "Done", id:4}]
   return (
-    <Center py={8} width="100%">
+    <Center py={8}>
         <Box
           p={3}
-          ml="0px"
-          mr="30px"
+          ml="0px" display='flex' flexDir='row'
+          mr="30px" 
           height="100%"
           bg={useColorModeValue("white", "gray.800")}
           boxShadow={"2xl"}
