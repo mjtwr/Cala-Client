@@ -5,58 +5,53 @@ import "./styles.css";
 import CreateTask from "../CreateTask";
 
 const Backlog = (props) => {
-  console.log("BACKLOG PROPS:", props);
+  // console.log("BACKLOG PROPS:", props);
+  const { backlogTasksList } = props;
 
-  // let tasks = props.backlogTasksList.tasks;
-  //  if(props.backlogTasksList !== undefined){
-  //   console.log("holiiii")
-  //   tasks =  props.backlogTasksList.tasks
-  //  }
-  // console.log("TASKKKKS ", tasks);
-  const tasks = [
-    {
-      type: "bug",
-      title: "as a user i would like to blah blah blah",
-      priority: "medium",
-      user: "Pam",
-      id: "meklnl",
-    },
-    {
-      type: "Bug",
-      title: "as a user i would like to blah blah blah",
-      priority: "high",
-      user: "mike",
-      id: "Oscar",
-    },
-    {
-      type: "UserStory",
-      title: "as a user i would like to blah blah blah",
-      priority: "medium",
-      user: "Jim",
-      id: "meklnl",
-    },
-    {
-      type: "Task",
-      title: "as a user i would like to blah blah blah",
-      priority: "low",
-      user: "Angela",
-      id: "meklnl",
-    },
-    {
-      type: "Bug",
-      title: "as a user i would like to sleep",
-      priority: "high",
-      user: "Michael",
-      id: "meklnl",
-    },
-    {
-      type: "buUserStoryg",
-      title: "as a user i would like to blah blah blah",
-      priority: "low",
-      user: "charles",
-      id: "meklnl",
-    },
-  ];
+  // const tasks = [
+  //   {
+  //     type: "bug",
+  //     title: "as a user i would like to blah blah blah",
+  //     priority: "medium",
+  //     user: "Pam",
+  //     id: "meklnl",
+  //   },
+  //   {
+  //     type: "Bug",
+  //     title: "as a user i would like to blah blah blah",
+  //     priority: "high",
+  //     user: "mike",
+  //     id: "Oscar",
+  //   },
+  //   {
+  //     type: "UserStory",
+  //     title: "as a user i would like to blah blah blah",
+  //     priority: "medium",
+  //     user: "Jim",
+  //     id: "meklnl",
+  //   },
+  //   {
+  //     type: "Task",
+  //     title: "as a user i would like to blah blah blah",
+  //     priority: "low",
+  //     user: "Angela",
+  //     id: "meklnl",
+  //   },
+  //   {
+  //     type: "Bug",
+  //     title: "as a user i would like to sleep",
+  //     priority: "high",
+  //     user: "Michael",
+  //     id: "meklnl",
+  //   },
+  //   {
+  //     type: "buUserStoryg",
+  //     title: "as a user i would like to blah blah blah",
+  //     priority: "low",
+  //     user: "charles",
+  //     id: "meklnl",
+  //   },
+  // ];
 
   return (
     <div className="backlogCard">
@@ -74,10 +69,10 @@ const Backlog = (props) => {
         </Box>
       </Flex>
 
-      {tasks.map((task, i) => {
+      {backlogTasksList.map((task, i) => {
         return (
           <div>
-            <Task origin="backlog" key={task._id} />
+            <Task origin="backlog" key={task._id} task={task} color='white'/>
             {/* DELETE TASK FROM ORIGIN DETERMINED BY QUERY */}
           </div>
         );

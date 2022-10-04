@@ -52,3 +52,12 @@ export function getBacklogTasks(projectId) {
     .then(successStatus)
     .catch(internalServerError);
 }
+
+// /sprints?projectId=633a5db299f8acab76adb830
+export function getSprints(projectId) {
+  console.log("SEND REQUEST ID", projectId)
+  return projectService
+    .get(`/sprints?projectId=${projectId}`, config)
+    .then(successStatus)
+    .catch(internalServerError);
+}

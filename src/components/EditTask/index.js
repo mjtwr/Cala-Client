@@ -17,7 +17,8 @@ import {
 } from "@chakra-ui/react";
 import { FiEdit } from "react-icons/fi";
 
-const EditTask = () => {
+const EditTask = (props) => {
+  const {color} = props
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const initialRef = React.useRef(null);
@@ -29,7 +30,7 @@ const EditTask = () => {
           aria-label="Edit"
           onClick={onOpen}
           type="submit"
-          backgroundColor="#FAF5FF"
+          backgroundColor={color}
           icon={<FiEdit />}
           margin-top="-30px"
         />

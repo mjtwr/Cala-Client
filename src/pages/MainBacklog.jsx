@@ -2,22 +2,34 @@ import React from "react";
 import { useColorModeValue, Center, Box } from "@chakra-ui/react";
 import Sprint from "../components/Sprint";
 import Backlog from "../components/Backlog";
-import { getBacklogTasks } from "../services/services";
+import { getBacklogTasks, getSprints } from "../services/services";
 import { useEffect, useState } from "react";
 
 const MainBacklog = () => {
+  const [backlogTasksList, setBacklogTasksList] = useState([]);
+  const [sprintsList, setSprintsList] = useState([]);
+
   useEffect(() => {
     console.log("CALLING API");
-    getBacklogTasks("633b31fb2bee9f56d96b71fa")
+    getSprints("633b31fb2bee9f56d96b71fa")
       .then((response) => {
-        console.log("RESPONSE BACKLOG", response.data);
-        setBacklogTasksList(response.data);
+        console.log("RESPONSE SPRINT", response.data);
+        setSprintsList(response.data.sprints);
       })
 
       .catch((err) => console.log(err));
-  }, []);
 
-  const [backlogTasksList, setBacklogTasksList] = useState([]);
+    getBacklogTasks("633b31fb2bee9f56d96b71fa")
+      .then((response) => {
+        // console.log("RESPONSE BACKLOG", response.data);
+        setBacklogTasksList(response.data.tasks);
+      })
+
+      .catch((err) => console.log(err));
+  }
+  , []);
+
+  
 
   return (
     <Center py={8} width="100%">
@@ -34,8 +46,15 @@ const MainBacklog = () => {
         pos={"relative"}
         zIndex={1}
       >
-        <Sprint />
-        <Backlog backlogTasksList={backlogTasksList} />
+      {sprintsList.map((sprint, i)=>{
+        return(
+          <div>
+          <Sprint sprintTasksList={sprint.tasks}/>
+          <br/>
+          </div>
+        )
+      })}
+       <Backlog backlogTasksList={backlogTasksList} />
       </Box>
     </Center>
   );

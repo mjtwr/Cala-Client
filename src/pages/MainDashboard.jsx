@@ -3,6 +3,7 @@ import Dashboard from '../components/Dashboard'
 import {Center, Box, useColorModeValue} from '@chakra-ui/react'
 
 const MainDashboard = () => {
+  
   return (
     <Center py={8} width="100%">
     <Box
