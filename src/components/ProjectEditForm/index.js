@@ -52,7 +52,7 @@ const ProjectEditForm = () => {
 
             <ModalFooter>
               <Button colorScheme="purple" mr={3}>
-                Update
+                Create
               </Button>
               <Button colorScheme='red' onClick={onClose}>Cancel</Button>
             </ModalFooter>

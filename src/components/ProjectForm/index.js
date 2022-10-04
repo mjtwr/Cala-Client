@@ -52,10 +52,10 @@ const ProjectForm = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3}>
+            <Button colorScheme="purple" mr={3}>
               Update
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={onClose} colorScheme='red'>Cancel</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
