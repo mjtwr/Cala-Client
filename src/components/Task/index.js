@@ -2,10 +2,10 @@ import React from "react";
 import "./styles.css";
 import { Center, Grid, GridItem } from "@chakra-ui/react";
 import EditTask from "../EditTask";
-import DeletePopUp from "../DeletePopUp";
+import DeleteTask from "../DeleteTask";
 
 const Task = (props) => {
-  const { task, color } = props;
+  const { task, color, handleDeleteTask } = props;
 
   return (
     <Center py={2} width="100%">
@@ -30,7 +30,7 @@ const Task = (props) => {
           </GridItem>
           <GridItem w="100%" h="20" className="options-btn">
             <EditTask color={color} />
-            <DeletePopUp color={color} feature="task" />
+            <DeleteTask color={color} feature="task" taskId={task._id} handleDeleteTask={handleDeleteTask}/>
           </GridItem>
         </Grid>
       </div>

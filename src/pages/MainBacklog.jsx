@@ -9,6 +9,7 @@ import {
   getSprints,
   deleteSprint,
   getAllProjects,
+  deleteTask,
 } from "../services/services";
 import NewSprint from "../components/NewSprint";
 import FilterProject from "../components/FilterProject";
@@ -19,7 +20,7 @@ const MainBacklog = (props) => {
   const [sprintsList, setSprintsList] = useState([]);
   const [projectsList, setProjectsList] = useState([]);
   const [projectId, setProjectId] = useState(null);
-  const [backlogId, setBacklogId] = useState('');
+  const [backlogId, setBacklogId] = useState("");
   // let backlogId = ''
 
   const getProjectData = () => {
@@ -33,7 +34,7 @@ const MainBacklog = (props) => {
     getBacklogTasks(projectId)
       .then((response) => {
         // console.log("RESPONSE GET BACKLOG TASKS", response.data);
-        setBacklogId(response.data._id) 
+        setBacklogId(response.data._id);
         // console.log("BL ID====>", backlogId)
         setBacklogTasksList(response.data.tasks);
       })
@@ -80,12 +81,10 @@ const MainBacklog = (props) => {
       .then(() => console.log("Sprint deleted"))
       .catch((err) => console.log(err));
   };
-  //enviar el backlogId
   const handleCreateTask = (task) => {
     createTask(backlogId, task)
-    
       .then((res) => {
-        console.log("RES CREATE BLtask",res)
+        console.log("RES CREATE BLtask", res);
         let newBacklogTasksList = [...backlogTasksList];
         newBacklogTasksList.push(res.data);
 
@@ -95,8 +94,22 @@ const MainBacklog = (props) => {
       .catch((err) => console.log(err));
   };
 
+  const handleDeleteTask = (id) => {
+    console.log("handleDeleteTask", id)
+    deleteTask(id)
+      .then((res) => {
+        console.log(res)
+        let i = backlogTasksList.findIndex((task) => task._id === id);
+        const left = backlogTasksList.slice(0, i);
+        const right = backlogTasksList.slice(i + 1);
+        setBacklogTasksList(left.concat(right));
+      })
+      // .then(() => console.log("Task deleted"))
+      .catch((err) => console.log(err));
+  };
+
   const handleChange = (idProject) => {
-    console.log("IDPROJECT", idProject);
+    // console.log("IDPROJECT", idProject);
     setProjectId(idProject);
   };
   return (
@@ -114,12 +127,10 @@ const MainBacklog = (props) => {
         pos={"relative"}
         zIndex={1}
       >
-        <Box p="4" display='flex' flexDir='column'>
-        <div className="subtitle">
-          Select your Project
-        </div>
-          <div >
-            <FilterProject 
+        <Box p="4" display="flex" flexDir="column">
+          <div className="subtitle">Select your Project</div>
+          <div>
+            <FilterProject
               projectsList={projectsList}
               handleChange={handleChange}
             />
@@ -142,6 +153,7 @@ const MainBacklog = (props) => {
           <Backlog
             backlogTasksList={backlogTasksList}
             handleCreateTask={handleCreateTask}
+            handleDeleteTask={handleDeleteTask}
           />
         )}
       </Box>
