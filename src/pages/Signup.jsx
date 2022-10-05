@@ -103,7 +103,9 @@ export default function Signup({ authenticate }) {
                     <p>{error.message}</p>
                   </div>
                 )}
-                <Button className="button__submit" type="submit" rightIcon={<ArrowForwardIcon />} colorScheme='purple' variant='outline'>
+                <Button className="button__submit" type="submit"
+                 rightIcon={<ArrowForwardIcon />} colorScheme='purple' 
+                 variant='outline'>
                   Submit
                 </Button>
               </form>

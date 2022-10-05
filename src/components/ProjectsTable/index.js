@@ -6,8 +6,6 @@ import {
   Grid,
   GridItem
 } from "@chakra-ui/react";
-// import { useEffect, useState } from "react";
-// import axios from "axios";
 import CreateProject from "../CreateProject";
 import EditTask from "../EditTask";
 import DeleteProject from "../DeleteProject";
@@ -15,23 +13,17 @@ import DeleteProject from "../DeleteProject";
 const ProjectsTable = (props) => {
   console.log("PROJECTTABLE PROPS", props)
   const { projectList } = props;
-  const [deleteProject, setDeleteProject] = useState([]);
 
  
 
   const handleDeleteProject = (e, id) => {
-    console.log("Reeceiving id child", id)
-    // console.log(projectList)
-    // console.log("handleeee", e.target);
-// let i = projectList.findIndex(project => project._id === id)
-// // console.log(i)
-
-// const left = projectList.slice(0, i)
-// const right = projectList.slice(i+1)
-props.handleDeleteProject(id)
-
-    console.log("LIST OF PROJECTS", projectList)
+      props.handleDeleteProject(id)
   };
+
+  const handleCreateProject = (res) =>{
+    console.log("Reeceiving props from child", res)
+    props.handleCreateProject(res)
+  }
 
   return (
     <Center py={8} width="100%">
@@ -58,7 +50,7 @@ props.handleDeleteProject(id)
         <Spacer />
         <Box p="4">
           <div>
-           <CreateProject/>
+           <CreateProject handleCreateProject={handleCreateProject}/>
           </div>
         </Box>
       </Flex>
@@ -111,4 +103,4 @@ props.handleDeleteProject(id)
   );
 };
 
-export default ProjectsTable;
+export default ProjectsTable

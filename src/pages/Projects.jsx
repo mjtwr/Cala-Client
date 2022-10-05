@@ -4,8 +4,7 @@ import { createProject, getAllProjects, deleteProject } from "../services/servic
 import { useEffect, useState } from "react";
 
 const Projects = (props) => {
-  // const { projectList } = props;
-
+  
   console.log("PROJECTS PAGE PROPS", props);
   const [projectsList, setProjectsList] = useState([]);
 
@@ -25,19 +24,27 @@ const Projects = (props) => {
     // console.log("receiving id parent",id)
     deleteProject(id)
     .then((res)=>{
-      console.log("RESPONSE",res)
+      // console.log("RESPONSE",res)
       let i = projectsList.findIndex((project) => project._id === id);
           // console.log(i)
           const left = projectsList.slice(0, i);
           const right = projectsList.slice(i + 1);
-
-    setProjectsList(left.concat(right));
+          setProjectsList(left.concat(right));
     })
     .then(()=> console.log("Project deleted"))
     .catch((err) => console.log(err))
   
   };
 
+  const handleCreateProject = (project) =>{
+    console.log("got project data from From: ", project)
+    createProject(project)
+    .then((res)=>{
+      let newProjectList = [...projectsList]
+      newProjectList.push(res.data)
+      setProjectsList(newProjectList)
+    }).catch((err) => console.log(err))
+  }
   //________________________________
 
   return (
@@ -45,7 +52,7 @@ const Projects = (props) => {
       <ProjectsTable
         projectList={projectsList}
         handleDeleteProject={handleDeleteProject}
-        handleUpdateProject={handleUpdateProject}
+        handleCreateProject={handleCreateProject}
       />
       ;
     </div>
