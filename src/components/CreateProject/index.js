@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   FormControl,
   Modal,
@@ -27,8 +26,7 @@ export default function CreateProject(props) {
   const initialRef = React.useRef(null);
   const [form, setForm] = useState({
     description: "",
-    title: "",
-    password: "",
+    title: ""
   });
   const { title, description } = form;
   // TODO: add validations

@@ -2,21 +2,25 @@ import React from "react";
 import { useColorModeValue, Center, Box } from "@chakra-ui/react";
 import Sprint from "../components/Sprint";
 import Backlog from "../components/Backlog";
-import { getBacklogTasks, getSprints } from "../services/services";
+import {
+  createSprint,
+  getBacklogTasks,
+  getSprints,
+} from "../services/services";
 import { useEffect, useState } from "react";
-
-const MainBacklog = () => {
+import CreateSprint from "../components/CreateSprint";
+import NewSprint from "../components/NewSprint";
+const MainBacklog = (props) => {
   const [backlogTasksList, setBacklogTasksList] = useState([]);
   const [sprintsList, setSprintsList] = useState([]);
 
   useEffect(() => {
-    // console.log("CALLING API");
+    console.log("CALLING API");
     getSprints("633b31fb2bee9f56d96b71fa")
       .then((response) => {
-        // console.log("RESPONSE SPRINT", response.data);
+        console.log("RESPONSE SPRINT", response.data);
         setSprintsList(response.data.sprints);
       })
-
       .catch((err) => console.log(err));
 
     getBacklogTasks("633b31fb2bee9f56d96b71fa")
@@ -26,10 +30,21 @@ const MainBacklog = () => {
       })
 
       .catch((err) => console.log(err));
-  }
-  , []);
+  }, []);
 
-  
+  //HANDLES
+  const handleCreateSprint = (sprint) => {
+    sprint.project ='633b31fb2bee9f56d96b71fa' 
+    console.log("SENDING REQ",sprint);
+    createSprint(sprint)
+      .then((res) => {
+        console.log("REEES",res);
+        let newSprintsList = [...sprintsList]
+        newSprintsList.push(res.data)
+        setSprintsList(newSprintsList)
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <Center py={8} width="100%">
@@ -46,15 +61,20 @@ const MainBacklog = () => {
         pos={"relative"}
         zIndex={1}
       >
-      {sprintsList.map((sprint, i)=>{
-        return(
+        <Box p="4" display="flex">
           <div>
-          <Sprint sprintTasksList={sprint.tasks}/>
-          <br/>
+            <NewSprint handleCreateSprint={handleCreateSprint} />
           </div>
-        )
-      })}
-       <Backlog backlogTasksList={backlogTasksList} />
+        </Box>
+        {sprintsList.map((sprint, i) => {
+          return (
+            <div>
+              <Sprint sprintTasksList={sprint.tasks} key={sprint._id} />
+              <br />
+            </div>
+          );
+        })}
+        <Backlog backlogTasksList={backlogTasksList} />
       </Box>
     </Center>
   );

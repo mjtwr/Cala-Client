@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const Projects = (props) => {
   
-  console.log("PROJECTS PAGE PROPS", props);
+  // console.log("PROJECTS PAGE PROPS", props);
   const [projectsList, setProjectsList] = useState([]);
 
   useEffect(() => {
@@ -45,8 +45,7 @@ const Projects = (props) => {
       setProjectsList(newProjectList)
     }).catch((err) => console.log(err))
   }
-  //________________________________
-
+ 
   return (
     <div>
       <ProjectsTable

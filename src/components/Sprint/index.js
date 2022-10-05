@@ -2,11 +2,14 @@ import React from "react";
 import { Box, Button, Flex, Spacer } from "@chakra-ui/react";
 import Task from "../Task";
 import { FiPlus } from "react-icons/fi";
-import CreateSprint from "../CreateSprint";
+import DeleteSprint from "../DeleteSprint";
+import EditSprint from "../EditSprint";
 
 const Sprint = (props) => {
   // console.log("SPRINT PROPS", props)
 const {sprintTasksList} = props
+
+
   return (
     <div className="backlogCard">
       <Flex>
@@ -15,10 +18,12 @@ const {sprintTasksList} = props
             <h1 className="feature">Sprint</h1>
           </div>
         </Box>
-        <Spacer />
-        <Box p="4">
+       <Spacer />
+        <Box p="4" display='flex'>
           <div>
-           <CreateSprint/>
+          <EditSprint/>
+           </div><div>
+           <DeleteSprint />
           </div>
         </Box>
       </Flex>
