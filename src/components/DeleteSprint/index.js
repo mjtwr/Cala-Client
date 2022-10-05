@@ -8,29 +8,26 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  Button, 
+  Button,
   IconButton,
 } from "@chakra-ui/react";
-import {  FiTrash2} from "react-icons/fi";
+import { FiTrash2 } from "react-icons/fi";
 
-const DeletePopUp = (props) => {
-  // console.log('DEL PROJECT PROPS', props)
-  const {feature, projectId} = props
+const DeleteSprint = (props) => {
+  console.log(props)
+  const { feature, sprintId, handleDeleteSprint } = props;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = React.useRef(null);
 
   const handleRemoveItem = (e) => {
-   const id = e.target.getAttribute("id")
-  //  console.log("ID", id)
-   props.handleDeleteProject(e, id)
-  //  Close popup?
-  //  console.log("CLICK")
+    const id = e.target.getAttribute("id");
+    console.log("id from popup", id);
+    handleDeleteSprint(id);
   };
 
   return (
     <>
-    <div>
-    
+      <div>
         <IconButton
           aria-label="delete"
           onClick={onOpen}
@@ -38,24 +35,29 @@ const DeletePopUp = (props) => {
           color="red"
           backgroundColor="#FAF5FF"
           icon={<FiTrash2 />}
-          margin-top='-30px'
+          margin-top="-30px"
         />
-
         <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Delete {feature}</ModalHeader>
+            <ModalHeader>Delete {props.sprintTitle}</ModalHeader>
             <ModalCloseButton />
             <ModalBody pb={6}>
               <span>Are you sure you want to delete this {feature}?</span>
             </ModalBody>
 
             <ModalFooter>
-              <Button colorScheme="purple" mr={3}
-              id={projectId} onClick={handleRemoveItem} >
+              <Button
+                colorScheme="purple"
+                mr={3}
+                id={sprintId}
+                onClick={handleRemoveItem}
+              >
                 Delete
               </Button>
-              <Button colorScheme='red' onClick={onClose}>Cancel</Button> 
+              <Button colorScheme="red" onClick={onClose}>
+                Cancel
+              </Button>
             </ModalFooter>
           </ModalContent>
         </Modal>
@@ -64,4 +66,4 @@ const DeletePopUp = (props) => {
   );
 };
 
-export default DeletePopUp;
+export default DeleteSprint;

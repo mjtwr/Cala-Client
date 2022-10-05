@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import {  FiTrash2} from "react-icons/fi";
 
-const DeletePopUp = (props) => {
+const DeleteProject = (props) => {
   // console.log('DEL PROJECT PROPS', props)
   const {feature, projectId} = props
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -64,4 +64,4 @@ const DeletePopUp = (props) => {
   );
 };
 
-export default DeletePopUp;
+export default DeleteProject;

@@ -5,11 +5,11 @@ import Backlog from "../components/Backlog";
 import {
   createSprint,
   getBacklogTasks,
-  getSprints,
+  getSprints, deleteSprint
 } from "../services/services";
 import { useEffect, useState } from "react";
-import CreateSprint from "../components/CreateSprint";
 import NewSprint from "../components/NewSprint";
+
 const MainBacklog = (props) => {
   const [backlogTasksList, setBacklogTasksList] = useState([]);
   const [sprintsList, setSprintsList] = useState([]);
@@ -34,16 +34,29 @@ const MainBacklog = (props) => {
 
   //HANDLES
   const handleCreateSprint = (sprint) => {
-    sprint.project ='633b31fb2bee9f56d96b71fa' 
-    console.log("SENDING REQ",sprint);
+    sprint.project = "633b31fb2bee9f56d96b71fa";
+    console.log("SENDING REQ", sprint);
     createSprint(sprint)
       .then((res) => {
-        console.log("REEES",res);
-        let newSprintsList = [...sprintsList]
-        newSprintsList.push(res.data)
-        setSprintsList(newSprintsList)
+        console.log("REEES", res);
+        let newSprintsList = [...sprintsList];
+        newSprintsList.push(res.data);
+        setSprintsList(newSprintsList);
       })
       .catch((err) => console.log(err));
+  };
+
+  const handleDeleteSprint = (id) => {
+    console.log("got sprint id from Modal: ",id)
+    deleteSprint(id)
+    .then((res)=>{
+      let i = sprintsList.findIndex((sprint) => sprint._id === id);
+      const left = sprintsList.slice(0, i);
+      const right = sprintsList.slice(i + 1);
+      setSprintsList(left.concat(right));
+    })
+    .then(()=> console.log("Sprint deleted"))
+    .catch((err) => console.log(err))
   };
 
   return (
@@ -69,7 +82,7 @@ const MainBacklog = (props) => {
         {sprintsList.map((sprint, i) => {
           return (
             <div>
-              <Sprint sprintTasksList={sprint.tasks} key={sprint._id} />
+              <Sprint sprint={sprint} key={sprint._id} handleDeleteSprint={handleDeleteSprint}/>
               <br />
             </div>
           );

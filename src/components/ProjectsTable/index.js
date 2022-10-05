@@ -1,29 +1,29 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
-  Center, Spacer, 
-  Box, Flex, 
+  Center,
+  Spacer,
+  Box,
+  Flex,
   useColorModeValue,
   Grid,
-  GridItem
+  GridItem,
 } from "@chakra-ui/react";
 import CreateProject from "../CreateProject";
 import EditTask from "../EditTask";
 import DeleteProject from "../DeleteProject";
 
 const ProjectsTable = (props) => {
-  console.log("PROJECTTABLE PROPS", props)
+  console.log("PROJECTTABLE PROPS", props);
   const { projectList } = props;
 
- 
-
   const handleDeleteProject = (e, id) => {
-      props.handleDeleteProject(id)
+    props.handleDeleteProject(id);
   };
 
-  const handleCreateProject = (res) =>{
-    console.log("Reeceiving props from child", res)
-    props.handleCreateProject(res)
-  }
+  const handleCreateProject = (res) => {
+    console.log("Reeceiving props from child", res);
+    props.handleCreateProject(res);
+  };
 
   return (
     <Center py={8} width="100%">
@@ -41,20 +41,20 @@ const ProjectsTable = (props) => {
         zIndex={1}
       >
         <div>
-        <Flex>
-        <Box p="4">
-          <div>
-            <h1 className="feature">My Projects</h1>
-          </div>
-        </Box>
-        <Spacer />
-        <Box p="4">
-          <div>
-           <CreateProject handleCreateProject={handleCreateProject}/>
-          </div>
-        </Box>
-      </Flex>
-          </div>
+          <Flex>
+            <Box p="4">
+              <div>
+                <h1 className="feature">My Projects</h1>
+              </div>
+            </Box>
+            <Spacer />
+            <Box p="4">
+              <div>
+                <CreateProject handleCreateProject={handleCreateProject} />
+              </div>
+            </Box>
+          </Flex>
+        </div>
         <div>
           <Grid templateColumns="repeat(5, 1fr)" gap={6}>
             <GridItem w="100%" h="10" className="subtitle-grey">
@@ -89,9 +89,13 @@ const ProjectsTable = (props) => {
                 <GridItem w="100%" h="12">
                   {project.user}
                 </GridItem>
-                <GridItem w="100%" h="12" className="options-btn" >
-                  <EditTask/>
-                  <DeleteProject feature='project' projectId={project._id}  handleDeleteProject={ handleDeleteProject}/>
+                <GridItem w="100%" h="12" className="options-btn">
+                  <EditTask />
+                  <DeleteProject
+                    feature="project"
+                    projectId={project._id}
+                    handleDeleteProject={handleDeleteProject}
+                  />
                 </GridItem>
               </Grid>
               <hr />
@@ -103,4 +107,4 @@ const ProjectsTable = (props) => {
   );
 };
 
-export default ProjectsTable
+export default ProjectsTable;
