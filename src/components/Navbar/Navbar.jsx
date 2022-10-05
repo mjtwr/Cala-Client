@@ -7,7 +7,7 @@ import { FiLogIn, FiLogOut} from "react-icons/fi";
 
 const Navbar = (props) => {
   return (
-    <navbar>
+    <nav className="navbar">
       <Link to={PATHS.HOMEPAGE} className="nav__projectName">
       <img src="'../../logocalaai-light.png" alt="Cala App Logo" />
 
@@ -40,7 +40,7 @@ const Navbar = (props) => {
           </>
         )}
       </div>
-    </navbar>
+    </nav>
   );
 };
 

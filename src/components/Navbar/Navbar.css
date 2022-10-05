@@ -1,4 +1,4 @@
-navbar {
+.navbar{
   display: flex;
   padding: 1em;
   justify-content: space-between;

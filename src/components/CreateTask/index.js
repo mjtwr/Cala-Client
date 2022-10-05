@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Modal,
-  Select,
-  Component,
   ModalOverlay,
   ModalContent,
+  Select,
   ModalHeader,
   ModalFooter,
   ModalBody,
   FormLabel,
   Input,
+  Textarea,
   ModalCloseButton,
   useDisclosure,
   Button,
@@ -18,13 +18,35 @@ import {
 // import { DatePicker } from "chakra-ui-date-input"; no pude instalarla = error
 import { FiPlus } from "react-icons/fi";
 
-const CreateTask = () => {
+export default function CreateTask(props) {
+  // console.log("RECEIVING PROPS CREATETASK:", props)
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   const initialRef = React.useRef(null);
+  const [form, setForm] = useState({
+    description: "",
+    title: "",
+    status: "",
+    type: "",
+    priority: "",
+  });
+  const { title, description, status, type, priority } = form;
+  // TODO: add validations
+  // const [error, setError] = useState(null);
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    return setForm({ ...form, [name]: value });
+  }
+
+  function handleFormSubmission(event) {
+    event.preventDefault();
+    console.log("HANDLE FORM SUBMISSION",title, description, status, type, priority);
+    props.handleCreateTask({ title, status, description, type, priority });
+    console.log(props);
+  }
 
   return (
-    <>
+    <div>
       <Button
         onClick={onOpen}
         className="button__submit popupModal"
@@ -35,71 +57,98 @@ const CreateTask = () => {
         colorScheme="purple"
         variant="outline"
       >
-        New Task
+        Add Task{" "}
       </Button>
 
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Create Task</ModalHeader>
+          <ModalHeader color="purple.700">Create Task</ModalHeader>
           <ModalCloseButton />
-          <ModalBody pb={6} className="modalContent">
-            <FormControl>
-              <FormLabel>Title</FormLabel>
-              <Input ref={initialRef} placeholder="Title" />
-            </FormControl>
-
-            <FormControl mt={4}>
-              <FormLabel>Description</FormLabel>
-              <Input
-                placeholder="
-              Description"
-              />
-            </FormControl>
-
-            <FormControl w="100px" mr="10px" mt="20px">
-              <Select placeholder="Type">
-                <option>Task</option>
-                <option>User Story</option>
-                <option>Bug</option>
-              </Select>
-            </FormControl>
-            <FormControl w="120px" mr="10px" mt="20px">
-              <Select placeholder="Priority">
-                <option>Low</option>
-                <option>Medium</option>
-                <option>High</option>
-              </Select>
-            </FormControl>
-            <FormControl w="140px" mr="10px" mt="20px">
-              <Select placeholder="Status">
-                <option>To-Do</option>
-                <option>In Progress</option>
-                <option>Testing</option>
-                <option>Done</option>
-              </Select>
-            </FormControl>
-            {/* <FormControl>
-              <DatePicker
-                placeholder="Date picker placeholder"
-                name="date"
-                onChange={(date: string) => console.log(date)}
-              />
-            </FormControl> */}
+          <ModalBody pb={6}>
+            <div>
+              <form onSubmit={handleFormSubmission}>
+                <FormControl isRequired>
+                  <FormLabel htmlFor="input-title" color="purple.700">
+                    Title
+                  </FormLabel>
+                  <Input
+                    id="input-title"
+                    type="title"
+                    mb="15px"
+                    name="title"
+                    value={title}
+                    onChange={handleInputChange}
+                  />
+                </FormControl>
+                <FormControl>
+                  <FormLabel htmlFor="input-description" color="purple.700">
+                    Description
+                  </FormLabel>
+                  <Textarea
+                    id="input-description"
+                    type="textarea"
+                    mb="15px"
+                    name="description"
+                    value={description}
+                    onChange={handleInputChange}
+                  />
+                </FormControl>{" "}
+                <FormControl isRequired w="140px" mr="10px" mt="20px">
+                  <Select
+                    placeholder="Type"
+                    value={type}
+                    name="type"
+                    onChange={handleInputChange}
+                  >
+                    <option value="task">Task</option>
+                    <option value="user-story">User Story</option>
+                    <option value="bug">Bug</option>
+                  </Select>
+                </FormControl>
+                <FormControl w="140px" mr="10px" mt="20px">
+                  <Select
+                    placeholder="Status"
+                    value={status}
+                    name="status"
+                    onChange={handleInputChange}
+                  >
+                    <option value="todo">To-Do</option>
+                    <option value="inprogress">In Progress</option>
+                    <option value="testing">Testing</option>
+                    <option value="done">Done</option>
+                  </Select>
+                </FormControl>
+                <FormControl w="140px" mr="10px" mt="20px">
+                  <Select
+                    placeholder="Priority"
+                    value={priority}
+                    name="priority"
+                    onChange={handleInputChange}
+                  >
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                  </Select>
+                </FormControl>
+                <ModalFooter>
+                  <Button
+                    colorScheme="purple"
+                    mr={3}
+                    type="submit"
+                    onClick={onClose}
+                  >
+                    Create
+                  </Button>
+                  <Button onClick={onClose} colorScheme="red">
+                    Cancel
+                  </Button>
+                </ModalFooter>
+              </form>
+            </div>
           </ModalBody>
-
-          <ModalFooter>
-            <Button colorScheme="purple" mr={3}>
-              Create
-            </Button>
-            <Button onClick={onClose} colorScheme="red">
-              Cancel
-            </Button>
-          </ModalFooter>
         </ModalContent>
       </Modal>
-    </>
+    </div>
   );
-};
-
-export default CreateTask;
+}

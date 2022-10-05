@@ -14,14 +14,14 @@ import {
 import { FiTrash2 } from "react-icons/fi";
 
 const DeleteSprint = (props) => {
-  console.log(props)
+  // console.log(props)
   const { feature, sprintId, handleDeleteSprint } = props;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = React.useRef(null);
 
   const handleRemoveItem = (e) => {
     const id = e.target.getAttribute("id");
-    console.log("id from popup", id);
+    // console.log("id from popup", id);
     handleDeleteSprint(id);
   };
 

@@ -5,7 +5,7 @@ import DeleteSprint from "../DeleteSprint";
 import EditSprint from "../EditSprint";
 
 const Sprint = (props) => {
-  console.log("SPRINT PROPS", props);
+  // console.log("SPRINT PROPS", props);
 
   const handleDeleteSprint = (id) => {
     props.handleDeleteSprint(id);
@@ -36,6 +36,7 @@ const Sprint = (props) => {
         </Box>
       </Flex>
       {props.sprint.tasks.map((task, i) => {
+        console.log("TASK SPRINT", task)
         return (
           <div>
             <Task origin="sprint" task={task} key={task._id} color="white" />

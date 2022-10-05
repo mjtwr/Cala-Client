@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const Projects = (props) => {
   
-  // console.log("PROJECTS PAGE PROPS", props);
+  console.log("PROJECTS PAGE IS RECEIVING", props);
   const [projectsList, setProjectsList] = useState([]);
 
   useEffect(() => {

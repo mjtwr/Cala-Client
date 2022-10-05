@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import {
   Modal,
   ModalOverlay,
-  ModalContent, Select,
+  ModalContent,
+  Select,
   ModalHeader,
   ModalFooter,
   ModalBody,
@@ -36,9 +37,9 @@ export default function CreateSprint(props) {
 
   function handleFormSubmission(event) {
     event.preventDefault();
-    console.log(title, description, status);
+    // console.log(title, description, status);
     props.handleCreateSprint({ title, status, description });
-    console.log(props)
+    // console.log(props);
   }
 
   return (
@@ -91,11 +92,15 @@ export default function CreateSprint(props) {
                   />
                 </FormControl>{" "}
                 <FormControl w="140px" mr="10px" mt="20px">
-                  <Select placeholder="Status" value={status} name='status'
-                    onChange={handleInputChange}>
-                    <option value='start'>Start</option>
-                    <option value='inprogress'>In Progress</option>
-                    <option value='done'>Done</option>
+                  <Select
+                    placeholder="Status"
+                    value={status}
+                    name="status"
+                    onChange={handleInputChange}
+                  >
+                    <option value="start">Start</option>
+                    <option value="inprogress">In Progress</option>
+                    <option value="done">Done</option>
                   </Select>
                 </FormControl>
                 <ModalFooter>

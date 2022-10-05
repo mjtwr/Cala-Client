@@ -14,10 +14,7 @@ import {
   FormErrorMessage,
   Heading,
   Input,
-  Button,
-  Box,
-  Center,
-  useColorModeValue,
+  Button
 } from "@chakra-ui/react";
 import { FiPlus } from "react-icons/fi";
 
@@ -83,7 +80,8 @@ export default function CreateProject(props) {
                   />
                 </FormControl>
                 <ModalFooter>
-                  <Button colorScheme="purple" mr={3} type="submit" onClick={onClose}>
+                  <Button colorScheme="purple" mr={3} type="submit" 
+                  onClick={onClose}>
                     Create
                   </Button>
                   <Button onClick={onClose} colorScheme="red">
