@@ -15,7 +15,7 @@ import MainBacklog from './pages/MainBacklog'
 import Pipeline from './pages/Pipeline'
 
 export default function App() {
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useColorModeValue, Center, Box } from "@chakra-ui/react";
 import Sprint from "../components/Sprint";
 import Backlog from "../components/Backlog";
@@ -8,36 +8,54 @@ import {
   createTask,
   getSprints,
   deleteSprint,
+  getAllProjects,
 } from "../services/services";
-import { useEffect, useState } from "react";
 import NewSprint from "../components/NewSprint";
+import FilterProject from "../components/FilterProject";
 
 const MainBacklog = (props) => {
-  console.log("MAIN BACKLOG IS RECEIVING:", props);
+  // console.log("MAIN BACKLOG IS RECEIVING:", props);
   const [backlogTasksList, setBacklogTasksList] = useState([]);
   const [sprintsList, setSprintsList] = useState([]);
+  const [projectsList, setProjectsList] = useState([]);
+  const [projectId, setProjectId] = useState(null);
+  const [backlogId, setBacklogId] = useState('');
+  // let backlogId = ''
 
-  useEffect(() => {
-    console.log("CALLING API");
-    getSprints("633b31fb2bee9f56d96b71fa")
+  const getProjectData = () => {
+    getSprints(projectId)
       .then((response) => {
         // console.log("RESPONSE SPRINT", response.data);
         setSprintsList(response.data.sprints);
       })
       .catch((err) => console.log(err));
 
-    getBacklogTasks("633b31fb2bee9f56d96b71fa")
+    getBacklogTasks(projectId)
       .then((response) => {
-        console.log("RESPONSE GET BACKLOG TASKS", response.data);
+        // console.log("RESPONSE GET BACKLOG TASKS", response.data);
+        setBacklogId(response.data._id) 
+        // console.log("BL ID====>", backlogId)
         setBacklogTasksList(response.data.tasks);
       })
 
       .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    getAllProjects()
+      .then((response) => setProjectsList(response.data))
+      .catch((err) => console.log(err));
   }, []);
+
+  useEffect(() => {
+    if (projectId) {
+      getProjectData();
+    }
+  }, [projectId]);
 
   //HANDLES
   const handleCreateSprint = (sprint) => {
-    sprint.project = "633b31fb2bee9f56d96b71fa";
+    sprint.project = projectId;
     // console.log("SENDING REQ", sprint);
     createSprint(sprint)
       .then((res) => {
@@ -62,10 +80,12 @@ const MainBacklog = (props) => {
       .then(() => console.log("Sprint deleted"))
       .catch((err) => console.log(err));
   };
-
+  //enviar el backlogId
   const handleCreateTask = (task) => {
-    createTask(task)
+    createTask(backlogId, task)
+    
       .then((res) => {
+        console.log("RES CREATE BLtask",res)
         let newBacklogTasksList = [...backlogTasksList];
         newBacklogTasksList.push(res.data);
 
@@ -75,6 +95,10 @@ const MainBacklog = (props) => {
       .catch((err) => console.log(err));
   };
 
+  const handleChange = (idProject) => {
+    console.log("IDPROJECT", idProject);
+    setProjectId(idProject);
+  };
   return (
     <Center py={8} width="100%">
       <Box
@@ -90,29 +114,36 @@ const MainBacklog = (props) => {
         pos={"relative"}
         zIndex={1}
       >
+        <Box p="4" display='flex' flexDir='column'>
+        <div className="subtitle">
+          Select your Project
+        </div>
+          <div >
+            <FilterProject 
+              projectsList={projectsList}
+              handleChange={handleChange}
+            />
+          </div>
+        </Box>
         <Box p="4" display="flex">
           <div>
-            <NewSprint handleCreateSprint={handleCreateSprint} />
+            {projectId && <NewSprint handleCreateSprint={handleCreateSprint} />}
           </div>
         </Box>
         {sprintsList.map((sprint, i) => {
-          console.log("SPRINT HAR", sprint);
           return (
-            <div>
-            <span>Sprint Id {sprint._id}</span>
-              <Sprint
-                sprint={sprint}
-                key={sprint._id}
-                handleDeleteSprint={handleDeleteSprint}
-              />
+            <div key={sprint._id}>
+              <Sprint sprint={sprint} handleDeleteSprint={handleDeleteSprint} />
               <br />
             </div>
           );
         })}
-        <Backlog
-          backlogTasksList={backlogTasksList}
-          handleCreateTask={handleCreateTask}
-        />
+        {projectId && (
+          <Backlog
+            backlogTasksList={backlogTasksList}
+            handleCreateTask={handleCreateTask}
+          />
+        )}
       </Box>
     </Center>
   );

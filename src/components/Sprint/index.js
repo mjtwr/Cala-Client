@@ -16,7 +16,9 @@ const Sprint = (props) => {
       <Flex>
         <Box p="4">
           <div>
-            <h1 className="feature">{props.sprint.title}:      {props.sprint.status}</h1>
+            <h1 className="feature">
+              {props.sprint.title}: {props.sprint.status}
+            </h1>
             <p>{props.sprint.description}</p>
           </div>
         </Box>
@@ -36,10 +38,10 @@ const Sprint = (props) => {
         </Box>
       </Flex>
       {props.sprint.tasks.map((task, i) => {
-        console.log("TASK SPRINT", task)
+        {/* console.log("TASK SPRINT", task); */}
         return (
-          <div>
-            <Task origin="sprint" task={task} key={task._id} color="white" />
+          <div key={task._id}>
+            <Task origin="sprint" task={task} color="white" />
           </div>
         );
       })}

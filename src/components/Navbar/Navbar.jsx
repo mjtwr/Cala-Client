@@ -17,7 +17,7 @@ const Navbar = (props) => {
       {/* ESTE ES EL MENU QUE SE MUESTRA CUANDO EL USUARIO INICIO SESION */}
         {props.user ? (
           <>
-            
+            <span>{props.user.username}</span>
             <Button className="button__submit" onClick={props.handleLogout} 
             rightIcon={<FiLogOut />} colorScheme='purple' variant='outline'>
                   LOGOUT

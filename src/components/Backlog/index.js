@@ -5,7 +5,7 @@ import "./styles.css";
 import CreateTask from "../CreateTask";
 
 const Backlog = (props) => {
-  console.log("BACKLOG PROPS (+NEW ARRAY):", props);
+  // console.log("BACKLOG PROPS (+NEW ARRAY):", props);
   const { backlogTasksList } = props;
   const handleCreateTask = (newTask) => {
     console.log(
@@ -33,8 +33,8 @@ const Backlog = (props) => {
 
       {backlogTasksList.map((task, i) => {
         return (
-          <div>
-            <Task origin="backlog" key={task._id} task={task} color="white" />
+          <div key={task._id}>
+            <Task origin="backlog"  task={task} color="white" />
             {/* DELETE TASK FROM ORIGIN DETERMINED BY QUERY */}
           </div>
         );

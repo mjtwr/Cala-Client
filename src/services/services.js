@@ -102,11 +102,10 @@ export function deleteSprint(sprintId) {
 }
 // TASKS
 
-// REVISAAAAAR
 // /backlogs/backlogId/tasks
-export function createTask(backlogId) {
+export function createTask(backlogId, task) {
   return projectService
-    .post(`/backlogs/${backlogId}/tasks`, backlogId, config)
+    .post(`/backlogs/${backlogId}/tasks`, task, config)
     .then(successStatus)
     .catch(internalServerError);
 }

@@ -40,9 +40,9 @@ export default function CreateTask(props) {
 
   function handleFormSubmission(event) {
     event.preventDefault();
-    console.log("HANDLE FORM SUBMISSION",title, description, status, type, priority);
+    // console.log("HANDLE FORM SUBMISSION",title, description, status, type, priority);
     props.handleCreateTask({ title, status, description, type, priority });
-    console.log(props);
+    // console.log(props);
   }
 
   return (
