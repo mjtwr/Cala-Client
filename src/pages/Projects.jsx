@@ -1,7 +1,6 @@
 import React from "react";
 import ProjectsTable from "../components/ProjectsTable";
-import { createProject, getAllProjects } from "../services/services";
-import axios from "axios";
+import { createProject, getAllProjects, deleteProject } from "../services/services";
 import { useEffect, useState } from "react";
 
 const Projects = (props) => {
@@ -24,13 +23,19 @@ const Projects = (props) => {
   //________________________________
   const handleDeleteProject = (id) => {
     // console.log("receiving id parent",id)
+    deleteProject(id)
+    .then((res)=>{
+      console.log("RESPONSE",res)
+      let i = projectsList.findIndex((project) => project._id === id);
+          // console.log(i)
+          const left = projectsList.slice(0, i);
+          const right = projectsList.slice(i + 1);
 
-    let i = projectsList.findIndex((project) => project._id === id);
-    // console.log(i)
-
-    const left = projectsList.slice(0, i);
-    const right = projectsList.slice(i + 1);
     setProjectsList(left.concat(right));
+    })
+    .then(()=> console.log("Project deleted"))
+    .catch((err) => console.log(err))
+  
   };
 
   //________________________________
@@ -40,6 +45,7 @@ const Projects = (props) => {
       <ProjectsTable
         projectList={projectsList}
         handleDeleteProject={handleDeleteProject}
+        handleUpdateProject={handleUpdateProject}
       />
       ;
     </div>
