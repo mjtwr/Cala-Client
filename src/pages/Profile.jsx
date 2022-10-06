@@ -48,7 +48,7 @@ const Profile = (props) => {
                   <Heading fontSize={'2xl'} fontWeight={500} fontFamily={'body'}>
                     {props.user.username}
                   </Heading>
-                  <Text color={'gray.500'}>Scrum Master</Text>
+                  <Text color={'gray.500'}>Full Stack</Text>
                 </Stack>
       
                 <Stack direction={'row'} justify={'center'} spacing={6} mb={5}>
