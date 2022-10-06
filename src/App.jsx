@@ -13,6 +13,7 @@ import Projects from './pages/Projects'
 import MainDashboard from './pages/MainDashboard'
 import MainBacklog from './pages/MainBacklog'
 import Pipeline from './pages/Pipeline'
+// import HomePage2 from '.pages/HomePage2'
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -63,10 +64,8 @@ export default function App() {
       
      
       <Routes>
-        {/* {routes({ user, authenticate, handleLogout }).map((route) => (
-          <Route key={route.path} path={route.path} element={route.element} />
-        ))} */}
         <Route path="/" element={<HomePage/>}/>
+        {/* <Route path="/home" element={<HomePage2/>}/> */}
         <Route path="/" element={<MainPage  user={user} authenticate={authenticate}/>}>
           <Route path="profile" element={<Profile  user={user} authenticate={authenticate}/>}/>
           <Route path="projects" element={<Projects  user={user} authenticate={authenticate}/>}/>

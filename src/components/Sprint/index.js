@@ -1,14 +1,24 @@
-import React from "react";
-import { Box, Button, Flex, Spacer } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { Box, Flex, Spacer } from "@chakra-ui/react";
 import Task from "../Task";
 import DeleteSprint from "../DeleteSprint";
 import EditSprint from "../EditSprint";
+import {deleteTask } from "../../services/services";
 
 const Sprint = (props) => {
-  // console.log("SPRINT PROPS", props);
+  const {handleDeleteSprint} = props
+  const [tasks, setTasks] = useState(props.sprint.tasks)
 
-  const handleDeleteSprint = (id) => {
-    props.handleDeleteSprint(id);
+  const handleDeleteTask = (id) => {
+    console.log("deleting task from sprint: ", id)
+    deleteTask(id)
+      .then((res) => {
+        let i = tasks.findIndex((task) => task._id === id);
+        const left = tasks.slice(0, i);
+        const right = tasks.slice(i + 1);
+        setTasks(left.concat(right));
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -37,11 +47,10 @@ const Sprint = (props) => {
           </div>
         </Box>
       </Flex>
-      {props.sprint.tasks.map((task, i) => {
-        {/* console.log("TASK SPRINT", task); */}
+      {tasks.map((task, i) => {
         return (
           <div key={task._id}>
-            <Task origin="sprint" task={task} color="white" />
+            <Task origin="sprint" task={task} color="white" handleDeleteTask={handleDeleteTask}/>
           </div>
         );
       })}

@@ -102,7 +102,7 @@ export default function CreateTask(props) {
                     onChange={handleInputChange}
                   >
                     <option value="task">Task</option>
-                    <option value="user-story">User Story</option>
+                    <option value="user story">User Story</option>
                     <option value="bug">Bug</option>
                   </Select>
                 </FormControl>

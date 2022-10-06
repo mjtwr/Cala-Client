@@ -13,7 +13,6 @@ import EditTask from "../EditTask";
 import DeleteProject from "../DeleteProject";
 
 const ProjectsTable = (props) => {
-  // console.log("PROJECTTABLE PROPS", props);
   const { projectList } = props;
 
   const handleDeleteProject = (e, id) => {

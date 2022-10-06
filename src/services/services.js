@@ -20,6 +20,7 @@ function successStatus(res) {
     data: res.data,
   };
 }
+
 const config = {
   headers: {
     Authorization: "6338a553b914e3d1746942f1",
@@ -27,32 +28,34 @@ const config = {
 };
 
 // creates a basic url for every request in this file
-const projectService = axios.create({
+const api = axios.create({
   baseURL: `http://localhost:5005/`,
 });
 
 // PROJECTS
 export function createProject(project) {
-  return projectService
+  return api
     .post("/projects", project, config)
     .then(successStatus)
     .catch(internalServerError);
 }
 export function getAllProjects() {
-  return projectService
+  return api
     .get("/projects", config)
     .then(successStatus)
     .catch(internalServerError);
 }
+
 // /projects/633775ca0d870e7cdfafdf83
 export function updateProject(projectId) {
-  return projectService
+  return api
     .put(`/projects/${projectId}`, config)
     .then(successStatus)
     .catch(internalServerError);
 }
+
 export function deleteProject(projectId) {
-  return projectService
+  return api
     .delete(`/projects/${projectId}`, config)
     .then(successStatus)
     .catch(internalServerError);
@@ -61,7 +64,7 @@ export function deleteProject(projectId) {
 // BACKLOG
 ///projects/projectId/backlogs
 export function getBacklogTasks(projectId) {
-  return projectService
+  return api
     .get(`/projects/${projectId}/backlogs`, config)
     .then(successStatus)
     .catch(internalServerError);
@@ -72,14 +75,14 @@ export function getBacklogTasks(projectId) {
 // /sprints?projectId=633a5db299f8acab76adb830
 export function getSprints(projectId) {
   // console.log("SEND REQUEST ID", projectId)
-  return projectService
+  return api
     .get(`/sprints?projectId=${projectId}`, config)
     .then(successStatus)
     .catch(internalServerError);
 }
 // /sprints
 export function createSprint(sprint) {
-  return projectService
+  return api
     .post("/sprints", sprint, config)
     .then(successStatus)
     .catch(internalServerError);
@@ -87,7 +90,7 @@ export function createSprint(sprint) {
 
 // /sprints/sprintId
 export function updateSprint(sprintId) {
-  return projectService
+  return api
     .put(`/sprints/${sprintId}`, config)
     .then(successStatus)
     .catch(internalServerError);
@@ -95,7 +98,7 @@ export function updateSprint(sprintId) {
 // /sprints/sprintId
 
 export function deleteSprint(sprintId) {
-  return projectService
+  return api
     .delete(`/sprints/${sprintId}`, config)
     .then(successStatus)
     .catch(internalServerError);
@@ -104,7 +107,7 @@ export function deleteSprint(sprintId) {
 
 // /backlogs/backlogId/tasks
 export function createTask(backlogId, task) {
-  return projectService
+  return api
     .post(`/backlogs/${backlogId}/tasks`, task, config)
     .then(successStatus)
     .catch(internalServerError);
@@ -112,7 +115,7 @@ export function createTask(backlogId, task) {
 
 // /tasks/taskId
 export function updateTask(taskId) {
-  return projectService
+  return api
     .put(`/tasks/${taskId}`, config)
     .then(successStatus)
     .catch(internalServerError);
@@ -121,7 +124,7 @@ export function updateTask(taskId) {
 //Update Sprint Task
 // /sprints/633c6bcaaf609868ffca39ff/tasks?backlogId=633b31fb2bee9f56d96b71fc
 export function updateSprintTask(sprintId, taskId) {
-  return projectService
+  return api
     .put(`/sprints/${sprintId}/tasks?backlogId=${taskId}`, config)
     .then(successStatus)
     .catch(internalServerError);
@@ -129,7 +132,7 @@ export function updateSprintTask(sprintId, taskId) {
 
 // /tasks/taskId
 export function deleteTask(taskId) {
-  return projectService
+  return api
     .delete(`/tasks/${taskId}`, config)
     .then(successStatus)
     .catch(internalServerError);
@@ -138,7 +141,7 @@ export function deleteTask(taskId) {
 //Move task from backlog to sprint
 ///sprints/633c6bcaaf609868ffca39ff/tasks?backlogId=633b31fb2bee9f56d96b71fc
 export function moveTask(sprintId, backlogId) {
-  return projectService
+  return api
     .put(`/sprints/${sprintId}/tasks?backlogId=${backlogId}`, config) //Should be delete?
     .then(successStatus)
     .catch(internalServerError);
@@ -147,7 +150,7 @@ export function moveTask(sprintId, backlogId) {
 //Move task from sprint to backlog
 // /sprints/633a6da8bb1e30a8befbae3b/tasks/633a6f3eed08f977eb4568cb?backlogId=633a5db299f8acab76adb832
 export function moveTaskToBacklog(sprintId, backlogId) {
-  return projectService
+  return api
     .delete(`/sprints/${sprintId}/tasks?backlogId=${backlogId}`, config)
     .then(successStatus)
     .catch(internalServerError);

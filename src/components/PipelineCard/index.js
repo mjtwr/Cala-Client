@@ -1,7 +1,6 @@
 import React from "react";
-import { Flex, Box, Spacer, Button ,IconButton} from "@chakra-ui/react";
+import { Flex, Box, Spacer ,IconButton} from "@chakra-ui/react";
 import { FiMoreHorizontal } from "react-icons/fi";
-import Task from "../Task";
 
 const PipelineCard = () => {
   const tasks = [
@@ -71,8 +70,8 @@ const PipelineCard = () => {
       </Flex>
       {tasks.map((task, i) => {
         return (
-          <div>
-            <Task />
+          <div key={task._id}>
+            <h1>lfjn3</h1>
           </div>
         );
       })}

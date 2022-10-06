@@ -15,30 +15,24 @@ import NewSprint from "../components/NewSprint";
 import FilterProject from "../components/FilterProject";
 
 const MainBacklog = (props) => {
-  // console.log("MAIN BACKLOG IS RECEIVING:", props);
   const [backlogTasksList, setBacklogTasksList] = useState([]);
   const [sprintsList, setSprintsList] = useState([]);
   const [projectsList, setProjectsList] = useState([]);
   const [projectId, setProjectId] = useState(null);
   const [backlogId, setBacklogId] = useState("");
-  // let backlogId = ''
 
   const getProjectData = () => {
     getSprints(projectId)
       .then((response) => {
-        // console.log("RESPONSE SPRINT", response.data);
         setSprintsList(response.data.sprints);
       })
       .catch((err) => console.log(err));
 
     getBacklogTasks(projectId)
       .then((response) => {
-        // console.log("RESPONSE GET BACKLOG TASKS", response.data);
         setBacklogId(response.data._id);
-        // console.log("BL ID====>", backlogId)
         setBacklogTasksList(response.data.tasks);
       })
-
       .catch((err) => console.log(err));
   };
 
@@ -57,20 +51,16 @@ const MainBacklog = (props) => {
   //HANDLES
   const handleCreateSprint = (sprint) => {
     sprint.project = projectId;
-    // console.log("SENDING REQ", sprint);
     createSprint(sprint)
       .then((res) => {
-        // console.log("REEES", res);
         let newSprintsList = [...sprintsList];
         newSprintsList.push(res.data);
-        console.log("nSLnEJRNV;BEJQVL'RNV", newSprintsList);
         setSprintsList(newSprintsList);
       })
       .catch((err) => console.log(err));
   };
 
   const handleDeleteSprint = (id) => {
-    // console.log("got sprint id from Modal: ", id);
     deleteSprint(id)
       .then((res) => {
         let i = sprintsList.findIndex((sprint) => sprint._id === id);
@@ -78,40 +68,35 @@ const MainBacklog = (props) => {
         const right = sprintsList.slice(i + 1);
         setSprintsList(left.concat(right));
       })
-      .then(() => console.log("Sprint deleted"))
       .catch((err) => console.log(err));
   };
+
   const handleCreateTask = (task) => {
     createTask(backlogId, task)
       .then((res) => {
-        console.log("RES CREATE BLtask", res);
+        console.log(res)
         let newBacklogTasksList = [...backlogTasksList];
         newBacklogTasksList.push(res.data);
-
-        console.log("newBacklogTasksList", newBacklogTasksList);
         setBacklogTasksList(newBacklogTasksList);
       })
       .catch((err) => console.log(err));
   };
 
   const handleDeleteTask = (id) => {
-    console.log("handleDeleteTask", id)
     deleteTask(id)
       .then((res) => {
-        console.log(res)
         let i = backlogTasksList.findIndex((task) => task._id === id);
         const left = backlogTasksList.slice(0, i);
         const right = backlogTasksList.slice(i + 1);
         setBacklogTasksList(left.concat(right));
       })
-      // .then(() => console.log("Task deleted"))
       .catch((err) => console.log(err));
   };
 
   const handleChange = (idProject) => {
-    // console.log("IDPROJECT", idProject);
     setProjectId(idProject);
   };
+
   return (
     <Center py={8} width="100%">
       <Box
