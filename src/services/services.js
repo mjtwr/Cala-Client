@@ -1,4 +1,5 @@
 import axios from "axios";
+import * as USER_HELPERS from "../utils/userToken";
 
 // here we are just maing our code look more DRY. With every backend call we must deal with errors and success states. The idea of creating these kinds of services is to make our lives easier in the components
 function internalServerError(err) {
@@ -31,32 +32,31 @@ const config = {
 const api = axios.create({
   baseURL: `http://localhost:5005/`,
 });
+api.defaults.headers.common["Authorization"] = USER_HELPERS.getUserToken();
 
 // PROJECTS
 export function createProject(project) {
   return api
-    .post("/projects", project, config)
+    .post("/projects", project)
     .then(successStatus)
     .catch(internalServerError);
 }
+
 export function getAllProjects() {
-  return api
-    .get("/projects", config)
-    .then(successStatus)
-    .catch(internalServerError);
+  return api.get("/projects").then(successStatus).catch(internalServerError);
 }
 
 // /projects/633775ca0d870e7cdfafdf83
 export function updateProject(projectId) {
   return api
-    .put(`/projects/${projectId}`, config)
+    .put(`/projects/${projectId}`)
     .then(successStatus)
     .catch(internalServerError);
 }
 
 export function deleteProject(projectId) {
   return api
-    .delete(`/projects/${projectId}`, config)
+    .delete(`/projects/${projectId}`)
     .then(successStatus)
     .catch(internalServerError);
 }
@@ -65,25 +65,23 @@ export function deleteProject(projectId) {
 ///projects/projectId/backlogs
 export function getBacklogTasks(projectId) {
   return api
-    .get(`/projects/${projectId}/backlogs`, config)
+    .get(`/projects/${projectId}/backlogs`)
     .then(successStatus)
     .catch(internalServerError);
 }
 
 // SPRINTS
-
 // /sprints?projectId=633a5db299f8acab76adb830
 export function getSprints(projectId) {
-  // console.log("SEND REQUEST ID", projectId)
   return api
-    .get(`/sprints?projectId=${projectId}`, config)
+    .get(`/sprints?projectId=${projectId}`)
     .then(successStatus)
     .catch(internalServerError);
 }
 // /sprints
 export function createSprint(sprint) {
   return api
-    .post("/sprints", sprint, config)
+    .post("/sprints", sprint)
     .then(successStatus)
     .catch(internalServerError);
 }
@@ -91,7 +89,7 @@ export function createSprint(sprint) {
 // /sprints/sprintId
 export function updateSprint(sprintId) {
   return api
-    .put(`/sprints/${sprintId}`, config)
+    .put(`/sprints/${sprintId}`)
     .then(successStatus)
     .catch(internalServerError);
 }
@@ -99,7 +97,7 @@ export function updateSprint(sprintId) {
 
 export function deleteSprint(sprintId) {
   return api
-    .delete(`/sprints/${sprintId}`, config)
+    .delete(`/sprints/${sprintId}`)
     .then(successStatus)
     .catch(internalServerError);
 }
@@ -108,7 +106,7 @@ export function deleteSprint(sprintId) {
 // /backlogs/backlogId/tasks
 export function createTask(backlogId, task) {
   return api
-    .post(`/backlogs/${backlogId}/tasks`, task, config)
+    .post(`/backlogs/${backlogId}/tasks`, task)
     .then(successStatus)
     .catch(internalServerError);
 }
@@ -116,7 +114,7 @@ export function createTask(backlogId, task) {
 // /tasks/taskId
 export function updateTask(taskId) {
   return api
-    .put(`/tasks/${taskId}`, config)
+    .put(`/tasks/${taskId}`)
     .then(successStatus)
     .catch(internalServerError);
 }
@@ -125,7 +123,7 @@ export function updateTask(taskId) {
 // /sprints/633c6bcaaf609868ffca39ff/tasks?backlogId=633b31fb2bee9f56d96b71fc
 export function updateSprintTask(sprintId, taskId) {
   return api
-    .put(`/sprints/${sprintId}/tasks?backlogId=${taskId}`, config)
+    .put(`/sprints/${sprintId}/tasks?backlogId=${taskId}`)
     .then(successStatus)
     .catch(internalServerError);
 }
@@ -133,7 +131,7 @@ export function updateSprintTask(sprintId, taskId) {
 // /tasks/taskId
 export function deleteTask(taskId) {
   return api
-    .delete(`/tasks/${taskId}`, config)
+    .delete(`/tasks/${taskId}`)
     .then(successStatus)
     .catch(internalServerError);
 }
@@ -142,7 +140,7 @@ export function deleteTask(taskId) {
 ///sprints/633c6bcaaf609868ffca39ff/tasks?backlogId=633b31fb2bee9f56d96b71fc
 export function moveTask(sprintId, backlogId) {
   return api
-    .put(`/sprints/${sprintId}/tasks?backlogId=${backlogId}`, config) //Should be delete?
+    .put(`/sprints/${sprintId}/tasks?backlogId=${backlogId}`)
     .then(successStatus)
     .catch(internalServerError);
 }
@@ -151,7 +149,7 @@ export function moveTask(sprintId, backlogId) {
 // /sprints/633a6da8bb1e30a8befbae3b/tasks/633a6f3eed08f977eb4568cb?backlogId=633a5db299f8acab76adb832
 export function moveTaskToBacklog(sprintId, backlogId) {
   return api
-    .delete(`/sprints/${sprintId}/tasks?backlogId=${backlogId}`, config)
+    .delete(`/sprints/${sprintId}/tasks?backlogId=${backlogId}`)
     .then(successStatus)
     .catch(internalServerError);
 }
