@@ -33,9 +33,7 @@ const Profile = (props) => {
         <Flex justify={"center"} mt={-12}>
           <Avatar
             size={"xxl"}
-            src={
-              "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
-            }
+            src={"https://bit.ly/broken-link"}
             alt={"Author"}
             css={{
               border: "2px solid white",
@@ -51,32 +49,31 @@ const Profile = (props) => {
             <Text color={"gray.500"}>Scrum Master</Text>
           </Stack>
 
-          <Stack direction={"row"} justify={"center"} spacing={6} mb={5}>
+          {/* <Stack direction={"row"} justify={"center"} spacing={6} mb={5}>
             <Stack spacing={0} align={"center"}>
               <Text fontWeight={600}># of projects</Text>
               {/* useEffect para recibir los datos */}
-              <Text fontSize={"sm"} color={"gray.500"}>
+              {/* <Text fontSize={"sm"} color={"gray.500"}>
                 Projects
               </Text>
             </Stack>
-          </Stack>
-          <Stack direction={"row"} justify={"center"} spacing={6} mb={5}>
+          </Stack>  */}
+          {/* <Stack direction={"row"} justify={"center"} spacing={6} mb={5}>
             <Stack spacing={0} align={"center"}>
               <Text fontWeight={600}># of Sprints</Text>
               <Text fontSize={"sm"} color={"gray.500"}>
                 Sprints
               </Text>
             </Stack>
-          </Stack>
-          <Stack direction={"row"} justify={"center"} spacing={6}>
+          </Stack> */}
+          {/* <Stack direction={"row"} justify={"center"} spacing={6}>
             <Stack spacing={0} align={"center"}>
               <Text fontWeight={600}>Enrollment Date</Text>
               <Text fontSize={"sm"} color={"gray.500"}>
                 Joined Cala
               </Text>
             </Stack>
-          </Stack>
-
+          </Stack> */}
           <Button
             w={"full"}
             mt={8}
