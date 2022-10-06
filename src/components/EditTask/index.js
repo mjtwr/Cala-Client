@@ -18,9 +18,8 @@ import {
 import { FiEdit } from "react-icons/fi";
 
 const EditTask = (props) => {
-  const {color} = props
+  const { color } = props;
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   const initialRef = React.useRef(null);
 
   return (
@@ -30,11 +29,9 @@ const EditTask = (props) => {
           aria-label="Edit"
           onClick={onOpen}
           type="submit"
-          backgroundColor={color}
+          backgroundColor="white"
           icon={<FiEdit />}
-          margin-top="-30px"
         />
-
         <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
@@ -53,7 +50,6 @@ const EditTask = (props) => {
               Description"
                 />
               </FormControl>
-
               <FormControl w="100px" mr="10px" mt="20px">
                 <Select placeholder="Type">
                   <option>Task</option>

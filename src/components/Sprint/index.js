@@ -4,6 +4,7 @@ import Task from "../Task";
 import DeleteSprint from "../DeleteSprint";
 import EditSprint from "../EditSprint";
 import {deleteTask } from "../../services/services";
+import "./styles.css";
 
 const Sprint = (props) => {
   const {handleDeleteSprint} = props
@@ -22,7 +23,7 @@ const Sprint = (props) => {
   };
 
   return (
-    <div className="backlogCard">
+    <div className="sprintCard">
       <Flex>
         <Box p="4">
           <div>

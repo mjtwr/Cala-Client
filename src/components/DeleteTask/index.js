@@ -33,9 +33,8 @@ const DeleteTask = (props) => {
           onClick={onOpen}
           type="submit"
           color="red"
-          backgroundColor="#FAF5FF"
+          backgroundColor="white"
           icon={<FiTrash2 />}
-          margin-top="-30px"
         />
 
         <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
