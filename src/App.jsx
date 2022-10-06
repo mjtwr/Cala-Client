@@ -13,7 +13,8 @@ import Projects from "./pages/Projects";
 import MainDashboard from "./pages/MainDashboard";
 import MainBacklog from "./pages/MainBacklog";
 import Pipeline from "./pages/Pipeline";
-// import HomePage2 from '.pages/HomePage2'
+import Welcome from "./pages/Welcome";
+import DragNDrop from "./pages/DragNDrop";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -64,6 +65,7 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<HomePage/>}/>
+        <Route path="/home" element={<Welcome/>}/>
         <Route
           path="/"
           element={<MainPage user={user} authenticate={authenticate} />}
@@ -88,7 +90,13 @@ export default function App() {
             path="pipeline"
             element={<Pipeline user={user} authenticate={authenticate} />}
           />
+           <Route
+            path="dragndrop"
+            element={<DragNDrop user={user} authenticate={authenticate} />}
+          />
         </Route>
+         
+       
         <Route
           path="/auth/login"
           element={<LogIn authenticate={authenticate} />}
