@@ -19,10 +19,6 @@ const ProjectsTable = (props) => {
     props.handleDeleteProject(id);
   };
 
-  const handleCreateProject = (res) => {
-    props.handleCreateProject(res);
-  };
-
   return (
     <Center py={8} width="100%">
       <Box
@@ -48,7 +44,7 @@ const ProjectsTable = (props) => {
             <Spacer />
             <Box p="4">
               <div>
-                <CreateProject handleCreateProject={handleCreateProject} />
+                <CreateProject handleCreateProject={props.handleCreateProject} />
               </div>
             </Box>
           </Flex>

@@ -27,7 +27,8 @@ export default function CreateUpdateProjectForm(props) {
 
   function handleFormSubmission(event) {
     event.preventDefault();
-    props.onSubmitProjectForm({ title: title, description: description, _id: props.project._id });
+    let projectId = props.project ? props.project._id : 0
+    props.onSubmitProjectForm({ title: title, description: description, _id: projectId });
   }
 
   return (

@@ -1,40 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-  FormControl,
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  Textarea,
-  FormLabel,
-  FormErrorMessage,
-  Heading,
-  Input,
   Button,
 } from "@chakra-ui/react";
 import { FiPlus } from "react-icons/fi";
+import CreateUpdateProjectForm from "../CreateUpdateProjectForm";
 
 export default function CreateProject(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = React.useRef(null);
-  const [form, setForm] = useState({
-    description: "",
-    title: "",
-  });
-  const { title, description } = form;
 
-  function handleInputChange(event) {
-    const { name, value } = event.target;
-    return setForm({ ...form, [name]: value });
-  }
+  const onSubmitProjectForm = (res) => {
+    onClose()
+    props.handleCreateProject(res);
+  };
 
-  function handleFormSubmission(event) {
-    event.preventDefault();
-    props.handleCreateProject({ title, description });
+  const onCloseProjectForm = () => {
+    onClose()
   }
 
   return (
@@ -58,47 +46,7 @@ export default function CreateProject(props) {
           <ModalCloseButton />
           <ModalBody pb={6}>
             <div>
-              <form onSubmit={handleFormSubmission}>
-                <FormControl isRequired>
-                  <FormLabel htmlFor="input-title" color="purple.700">
-                    Title
-                  </FormLabel>
-                  <Input
-                    id="input-title"
-                    type="title"
-                    mb="15px"
-                    name="title"
-                    value={title}
-                    onChange={handleInputChange}
-                  />
-                </FormControl>
-                <FormControl isRequired>
-                  <FormLabel htmlFor="input-description" color="purple.700">
-                    Description
-                  </FormLabel>
-                  <Textarea
-                    id="input-description"
-                    type="textarea"
-                    mb="15px"
-                    name="description"
-                    value={description}
-                    onChange={handleInputChange}
-                  />
-                </FormControl>
-                <ModalFooter>
-                  <Button
-                    colorScheme="purple"
-                    mr={3}
-                    type="submit"
-                    onClick={onClose}
-                  >
-                    Create
-                  </Button>
-                  <Button onClick={onClose} colorScheme="red">
-                    Cancel
-                  </Button>
-                </ModalFooter>
-              </form>
+              <CreateUpdateProjectForm action="Create" project={props.project} onSubmitProjectForm={onSubmitProjectForm} onCloseForm={onCloseProjectForm}></CreateUpdateProjectForm>
             </div>
           </ModalBody>
         </ModalContent>

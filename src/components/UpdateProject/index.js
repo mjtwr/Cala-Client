@@ -5,22 +5,15 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
-  FormLabel,
-  Input,
-  Select,
   ModalCloseButton,
   useDisclosure,
-  Button,
   IconButton,
-  FormControl,
 } from "@chakra-ui/react";
 import { FiEdit } from "react-icons/fi";
 import CreateUpdateProjectForm from "../CreateUpdateProjectForm";
 
 const UpdateProject = (props) => {
-  const { color } = props;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = React.useRef(null);
 
@@ -49,7 +42,7 @@ const UpdateProject = (props) => {
           <ModalContent>
             <ModalHeader>Update Project</ModalHeader>
             <ModalCloseButton />
-            <ModalBody pb={6} className="modalContent">
+            <ModalBody pb={6}>
                 <CreateUpdateProjectForm action="Update" project={props.project} onSubmitProjectForm={onSubmitProjectForm} onCloseForm={onCloseProjectForm}></CreateUpdateProjectForm>
             </ModalBody>
           </ModalContent>
