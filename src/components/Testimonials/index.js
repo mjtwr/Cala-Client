@@ -103,7 +103,8 @@ export default function WithSpeechBubbles() {
             <TestimonialContent>
               <TestimonialHeading>Efficient Collaborating</TestimonialHeading>
               <TestimonialText>
-                Our team loves Cala, the simple and quick interface helps us be focused on what need to be done and get things done.
+                Our team loves Cala, the simple and quick interface helps us be
+                focused on what need to be done and get things done.
               </TestimonialText>
             </TestimonialContent>
             <TestimonialAvatar
@@ -111,7 +112,7 @@ export default function WithSpeechBubbles() {
                 "https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
               }
               name={"Jane Cooper"}
-              title={"CEO at ABC Corporation"}
+              title={"Tech Lead at Mandala.io"}
             />
           </Testimonial>
           <Testimonial>
@@ -125,7 +126,7 @@ export default function WithSpeechBubbles() {
             <TestimonialAvatar
               src={"https://bit.ly/code-beast"}
               name={"Mark Zook"}
-              title={"CTO at Goal Corporation"}
+              title={"FullStack Developer at Goal Corporation"}
             />
           </Testimonial>
           <Testimonial>
@@ -140,7 +141,7 @@ export default function WithSpeechBubbles() {
             <TestimonialAvatar
               src={"https://bit.ly/ryan-florence"}
               name={"Jamie Oliver"}
-              title={"Project Manager at GongCha"}
+              title={"CTO at GongCha"}
             />
           </Testimonial>
         </Stack>

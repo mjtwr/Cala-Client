@@ -11,6 +11,7 @@ import {
 import CreateProject from "../CreateProject";
 import DeleteProject from "../DeleteProject";
 import UpdateProject from "../UpdateProject";
+import moment from "moment";
 
 const ProjectsTable = (props) => {
   const { projectList } = props;
@@ -44,7 +45,9 @@ const ProjectsTable = (props) => {
             <Spacer />
             <Box p="4">
               <div>
-                <CreateProject handleCreateProject={props.handleCreateProject} />
+                <CreateProject
+                  handleCreateProject={props.handleCreateProject}
+                />
               </div>
             </Box>
           </Flex>
@@ -78,13 +81,16 @@ const ProjectsTable = (props) => {
                   {project?.description}
                 </GridItem>
                 <GridItem w="100%" h="12">
-                  {project.createdAt}
+                  {moment(project.createdAt).format("DD/MM/YYYY HH:mm")}
                 </GridItem>
                 <GridItem w="100%" h="12">
                   {project.user}
                 </GridItem>
                 <GridItem w="100%" h="12" className="options-btn">
-                  <UpdateProject project={project} handleUpdateProject={props.handleUpdateProject}/>
+                  <UpdateProject
+                    project={project}
+                    handleUpdateProject={props.handleUpdateProject}
+                  />
                   <DeleteProject
                     feature="project"
                     projectId={project._id}

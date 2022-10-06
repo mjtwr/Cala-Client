@@ -49,7 +49,10 @@ export function getAllProjects() {
 // /projects/633775ca0d870e7cdfafdf83
 export function updateProject(project) {
   return api
-    .put(`/projects/${project._id}`, {title: project.title, description: project.description})
+    .put(`/projects/${project._id}`, {
+      title: project.title,
+      description: project.description,
+    })
     .then(successStatus)
     .catch(internalServerError);
 }
@@ -150,6 +153,14 @@ export function moveTask(sprintId, backlogId) {
 export function moveTaskToBacklog(sprintId, backlogId) {
   return api
     .delete(`/sprints/${sprintId}/tasks?backlogId=${backlogId}`)
+    .then(successStatus)
+    .catch(internalServerError);
+}
+//GET SPRINTS TASKSD
+///:sprintId/tasks"
+export function getSprintsTaks(sprintId) {
+  return api
+    .get(`/sprints/${sprintId}/tasks`)
     .then(successStatus)
     .catch(internalServerError);
 }

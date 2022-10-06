@@ -4,9 +4,20 @@ import { useNavigate } from "react-router-dom";
 import "./auth.css";
 import * as PATHS from "../utils/paths";
 import * as USER_HELPERS from "../utils/userToken";
-import {FormControl,FormLabel, FormErrorMessage,Heading, Input, Button, Box, Center, useColorModeValue} from '@chakra-ui/react'
-import {ArrowForwardIcon} from '@chakra-ui/icons'
-
+import {
+  FormControl,
+  FormLabel,
+  InputGroup,
+  InputRightElement,
+  FormErrorMessage,
+  Heading,
+  Input,
+  Button,
+  Box,
+  Center,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 export default function Signup({ authenticate }) {
   const [form, setForm] = useState({
@@ -17,6 +28,11 @@ export default function Signup({ authenticate }) {
   const { username, email, password } = form;
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+
+  // function PasswordInput() {
+  //   const [show, setShow] = React.useState(false)
+  //   const handleClick = () => setShow(!show)
+  // }
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -47,69 +63,100 @@ export default function Signup({ authenticate }) {
 
   return (
     <div>
-    <Center py={8}>
-      <Box
-          role={'group'}
+      <Center py={8}>
+        <Box
+          role={"group"}
           p={3}
-          maxW={'500px'}
-          w={'full'}
-          bg={useColorModeValue('white', 'gray.800')}
-          boxShadow={'2xl'}
-          rounded={'lg'}
-          pos={'relative'}
-          zIndex={1}>
-            <div>
-              <Heading color="purple.700" mt="20px" mb="30px">Sign Up</Heading>
-              <form onSubmit={handleFormSubmission} className="auth__form">
-                <FormControl isRequired> 
-                  <FormLabel htmlFor="input-email" color="purple.700">Email address</FormLabel>
-                  <Input id="input-email" type='email' mb="15px"
+          maxW={"500px"}
+          w={"full"}
+          bg={useColorModeValue("white", "gray.800")}
+          boxShadow={"2xl"}
+          rounded={"lg"}
+          pos={"relative"}
+          zIndex={1}
+        >
+          <div>
+            <Heading color="purple.700" mt="20px" mb="30px">
+              Sign Up
+            </Heading>
+            <form onSubmit={handleFormSubmission} className="auth__form">
+              <FormControl isRequired>
+                <FormLabel htmlFor="input-email" color="purple.700">
+                  Email address
+                </FormLabel>
+                <Input
+                  id="input-email"
+                  type="email"
+                  mb="15px"
                   name="email"
-                  color='#D6BCFA'
-                  placeholder='example@email.com'
-                  _placeholder={{ color: 'inherit' }}
+                  color="#D6BCFA"
+                  placeholder="example@email.com"
                   value={email}
                   onChange={handleInputChange}
-                  required/>
-                </FormControl>
-                <FormControl isRequired>
-                  <FormLabel htmlFor="input-username" color="purple.700">Username</FormLabel>
-                  <Input id="input-username" type='text' mb="15px"
+                  required
+                />
+              </FormControl>
+              <FormControl isRequired>
+                <FormLabel htmlFor="input-username" color="purple.700">
+                  Username
+                </FormLabel>
+                <Input
+                  id="input-username"
+                  type="text"
+                  mb="15px"
                   name="username"
-                  color='#D6BCFA'
-                  placeholder='Username'
-                  _placeholder={{ color: 'inherit' }}
+                  color="#D6BCFA"
+                  placeholder="Username"
                   value={username}
                   onChange={handleInputChange}
-                  required/>
-                </FormControl>
-                <FormControl isRequired>
-                  <FormLabel htmlFor="input-password" color="purple.700">Password</FormLabel>
-                  <Input id="input-password" type='text' mb="15px"
+                  required
+                />
+              </FormControl>
+              <FormControl isRequired>
+                <FormLabel htmlFor="input-password">Password</FormLabel>
+                {/* <InputGroup size='md'> */}
+                {/* <Input
+        pr='4.5rem'
+        type={show ? 'text' : 'password'}
+        placeholder='Enter password'
+      />
+      <InputRightElement width='4.5rem'>
+        <Button h='1.75rem' size='sm' onClick={handleClick}>
+          {show ? 'Hide' : 'Show'}
+        </Button>
+      </InputRightElement>
+    </InputGroup> */}
+                <Input
+                  id="input-password"
+                  type="text"
+                  mb="15px"
                   name="password"
-                  color='#D6BCFA'
-                  placeholder='Password'
-                  _placeholder={{ color: 'inherit' }}
+                  color="#D6BCFA"
+                  placeholder="Password"
                   value={password}
                   onChange={handleInputChange}
                   required
                   minLength="8"
-                  />
-                </FormControl>
+                />
+              </FormControl>
 
-                {error && (
-                  <div className="error-block">
-                    <p>There was an error submiting the form:</p>
-                    <p>{error.message}</p>
-                  </div>
-                )}
-                <Button className="button__submit" type="submit"
-                 rightIcon={<ArrowForwardIcon />} colorScheme='purple' 
-                 variant='outline'>
-                  Submit
-                </Button>
-              </form>
-            </div>
+              {error && (
+                <div className="error-block">
+                  <p>There was an error submiting the form:</p>
+                  <p>{error.message}</p>
+                </div>
+              )}
+              <Button
+                className="button__submit"
+                type="submit"
+                rightIcon={<ArrowForwardIcon />}
+                colorScheme="purple"
+                variant="outline"
+              >
+                Submit
+              </Button>
+            </form>
+          </div>
         </Box>
       </Center>
     </div>
