@@ -11,6 +11,8 @@ function DragNDrop() {
   const [inProgressArr, setInProgressArr] = useState([]);
   const [testingArr, setTestingArr] = useState([]);
   const [doneArr, setDoneArr] = useState([]);
+  const [projectsList, setProjectsList] = useState([]);
+
   //   const [taskStatus, setTaskStatus] = useState(itemsFromBackend);
   //   const changeTaskStatus = useCallback(
   //     (id, status) => {
@@ -27,6 +29,13 @@ function DragNDrop() {
   const changeTaskStatus = (id, status) => {
     console.log(id, status);
   };
+
+
+  useEffect(() => {
+    getAllProjects()
+      .then((response) => setProjectsList(response.data))
+      .catch((err) => console.log(err));
+  }, []);
 
   function sortByStatus(tasks) {
     for (let i = 0; i < tasks.length; i++) {

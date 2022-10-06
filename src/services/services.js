@@ -22,15 +22,9 @@ function successStatus(res) {
   };
 }
 
-const config = {
-  headers: {
-    Authorization: "6338a553b914e3d1746942f1",
-  },
-};
-
 // creates a basic url for every request in this file
 const api = axios.create({
-  baseURL: `http://localhost:5005/`,
+  baseURL: `${process.env.REACT_APP_CALASERVER_URL}/`,
 });
 api.defaults.headers.common["Authorization"] = USER_HELPERS.getUserToken();
 

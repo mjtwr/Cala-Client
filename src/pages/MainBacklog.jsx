@@ -74,7 +74,7 @@ const MainBacklog = (props) => {
   const handleCreateTask = (task) => {
     createTask(backlogId, task)
       .then((res) => {
-        console.log(res)
+        console.log(res);
         let newBacklogTasksList = [...backlogTasksList];
         newBacklogTasksList.push(res.data);
         setBacklogTasksList(newBacklogTasksList);
