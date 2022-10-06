@@ -14,7 +14,7 @@ import {
   FormErrorMessage,
   Heading,
   Input,
-  Button
+  Button,
 } from "@chakra-ui/react";
 import { FiPlus } from "react-icons/fi";
 
@@ -23,11 +23,9 @@ export default function CreateProject(props) {
   const initialRef = React.useRef(null);
   const [form, setForm] = useState({
     description: "",
-    title: ""
+    title: "",
   });
   const { title, description } = form;
-  // TODO: add validations
-  // const [error, setError] = useState(null);
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -36,8 +34,7 @@ export default function CreateProject(props) {
 
   function handleFormSubmission(event) {
     event.preventDefault();
-    console.log(title, description)
-    props.handleCreateProject({title, description})
+    props.handleCreateProject({ title, description });
   }
 
   return (
@@ -54,7 +51,6 @@ export default function CreateProject(props) {
       >
         New{" "}
       </Button>
-      
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
@@ -63,25 +59,39 @@ export default function CreateProject(props) {
           <ModalBody pb={6}>
             <div>
               <form onSubmit={handleFormSubmission}>
-                <FormControl isRequired> 
-                  <FormLabel htmlFor="input-title" color="purple.700">Title</FormLabel>
-                  <Input id="input-title" type='title' mb="15px"
-                  name="title"
-                  value={title}
-                  onChange={handleInputChange}
+                <FormControl isRequired>
+                  <FormLabel htmlFor="input-title" color="purple.700">
+                    Title
+                  </FormLabel>
+                  <Input
+                    id="input-title"
+                    type="title"
+                    mb="15px"
+                    name="title"
+                    value={title}
+                    onChange={handleInputChange}
                   />
                 </FormControl>
                 <FormControl isRequired>
-                  <FormLabel htmlFor="input-description" color="purple.700">Description</FormLabel>
-                  <Textarea id="input-description" type='textarea' mb="15px"
-                  name="description"
-                  value={description}
-                  onChange={handleInputChange}
+                  <FormLabel htmlFor="input-description" color="purple.700">
+                    Description
+                  </FormLabel>
+                  <Textarea
+                    id="input-description"
+                    type="textarea"
+                    mb="15px"
+                    name="description"
+                    value={description}
+                    onChange={handleInputChange}
                   />
                 </FormControl>
                 <ModalFooter>
-                  <Button colorScheme="purple" mr={3} type="submit" 
-                  onClick={onClose}>
+                  <Button
+                    colorScheme="purple"
+                    mr={3}
+                    type="submit"
+                    onClick={onClose}
+                  >
                     Create
                   </Button>
                   <Button onClick={onClose} colorScheme="red">

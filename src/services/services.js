@@ -47,9 +47,9 @@ export function getAllProjects() {
 }
 
 // /projects/633775ca0d870e7cdfafdf83
-export function updateProject(projectId) {
+export function updateProject(project) {
   return api
-    .put(`/projects/${projectId}`)
+    .put(`/projects/${project._id}`, {title: project.title, description: project.description})
     .then(successStatus)
     .catch(internalServerError);
 }

@@ -9,8 +9,8 @@ import {
   GridItem,
 } from "@chakra-ui/react";
 import CreateProject from "../CreateProject";
-import EditTask from "../EditTask";
 import DeleteProject from "../DeleteProject";
+import UpdateProject from "../UpdateProject";
 
 const ProjectsTable = (props) => {
   const { projectList } = props;
@@ -20,7 +20,6 @@ const ProjectsTable = (props) => {
   };
 
   const handleCreateProject = (res) => {
-    console.log("Reeceiving props from child", res);
     props.handleCreateProject(res);
   };
 
@@ -89,7 +88,7 @@ const ProjectsTable = (props) => {
                   {project.user}
                 </GridItem>
                 <GridItem w="100%" h="12" className="options-btn">
-                  <EditTask />
+                  <UpdateProject project={project} handleUpdateProject={props.handleUpdateProject}/>
                   <DeleteProject
                     feature="project"
                     projectId={project._id}

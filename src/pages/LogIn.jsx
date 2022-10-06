@@ -69,7 +69,7 @@ export default function LogIn({ authenticate }) {
                 </FormControl>
                 <FormControl isRequired pl="30px" pr="30px">
                   <FormLabel htmlFor="input-password" color="purple.700">Password</FormLabel>
-                  <Input id="input-password" type='text' mb="15px"
+                  <Input id="input-password" type='password' mb="15px"
                   name="password"
                   color='#D6BCFA'
                   placeholder='Password'

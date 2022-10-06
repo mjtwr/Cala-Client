@@ -5,14 +5,14 @@ import Navbar from "./components/Navbar/Navbar";
 import { getLoggedIn, logout } from "./services/auth";
 import * as USER_HELPERS from "./utils/userToken";
 import HomePage from "./pages/HomePage";
-import LogIn from './pages/LogIn'
+import LogIn from "./pages/LogIn";
 import Signup from "./pages/Signup";
 import MainPage from "./pages/MainPage";
-import Profile from "./pages/Profile"
-import Projects from './pages/Projects'
-import MainDashboard from './pages/MainDashboard'
-import MainBacklog from './pages/MainBacklog'
-import Pipeline from './pages/Pipeline'
+import Profile from "./pages/Profile";
+import Projects from "./pages/Projects";
+import MainDashboard from "./pages/MainDashboard";
+import MainBacklog from "./pages/MainBacklog";
+import Pipeline from "./pages/Pipeline";
 // import HomePage2 from '.pages/HomePage2'
 
 export default function App() {
@@ -61,21 +61,43 @@ export default function App() {
   return (
     <div className="App lilac-bg">
       <Navbar handleLogout={handleLogout} user={user} />
-      
-     
+
       <Routes>
         <Route path="/" element={<HomePage/>}/>
-        {/* <Route path="/home" element={<HomePage2/>}/> */}
-        <Route path="/" element={<MainPage  user={user} authenticate={authenticate}/>}>
-          <Route path="profile" element={<Profile  user={user} authenticate={authenticate}/>}/>
-          <Route path="projects" element={<Projects  user={user} authenticate={authenticate}/>}/>
-          <Route path="dashboard" element={<MainDashboard  user={user} authenticate={authenticate}/>}/>
-          <Route path="backlog" element={<MainBacklog  user={user} authenticate={authenticate}/>}/>
-          <Route path="pipeline" element={<Pipeline  user={user} authenticate={authenticate}/>}/>
+        <Route
+          path="/"
+          element={<MainPage user={user} authenticate={authenticate} />}
+        >
+          <Route
+            path="profile"
+            element={<Profile user={user} authenticate={authenticate} />}
+          />
+          <Route
+            path="projects"
+            element={<Projects user={user} authenticate={authenticate} />}
+          />
+          <Route
+            path="dashboard"
+            element={<MainDashboard user={user} authenticate={authenticate} />}
+          />
+          <Route
+            path="backlog"
+            element={<MainBacklog user={user} authenticate={authenticate} />}
+          />
+          <Route
+            path="pipeline"
+            element={<Pipeline user={user} authenticate={authenticate} />}
+          />
         </Route>
-        <Route path="/auth/login" element={<LogIn authenticate={authenticate}/>}/>
-        <Route path="/auth/signup" element={<Signup authenticate={authenticate}/>}/>
-        <Route path="/profile" element={<Profile user={user}/>}/>
+        <Route
+          path="/auth/login"
+          element={<LogIn authenticate={authenticate} />}
+        />
+        <Route
+          path="/auth/signup"
+          element={<Signup authenticate={authenticate} />}
+        />
+        <Route path="/profile" element={<Profile user={user} />} />
       </Routes>
     </div>
   );
