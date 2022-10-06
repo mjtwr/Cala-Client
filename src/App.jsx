@@ -64,8 +64,7 @@ export default function App() {
       <Navbar handleLogout={handleLogout} user={user} />
 
       <Routes>
-        <Route path="/" element={<HomePage/>}/>
-        <Route path="/home" element={<Welcome/>}/>
+        <Route path="/" element={<Welcome/>}/>
         <Route
           path="/"
           element={<MainPage user={user} authenticate={authenticate} />}
