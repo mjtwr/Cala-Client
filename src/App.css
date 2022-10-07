@@ -9,7 +9,7 @@
 
 .App-header {
   /* background-color: #44337a; */
-  background-image: url("https://img.freepik.com/vector-gratis/fondo-abstracto-aurora-boreal-tonos-morados_23-2148273711.jpg?w=1380&t=st=1665102447~exp=1665103047~hmac=58bd1284fcfd4b4dd47ab9d9f56416676ba41ddd6990d6f46d4b07e271e4879c");
+  background-image: url('../public/2808726.jpg');
   min-height: 100vh;
   display: flex;
   flex-direction: column;
