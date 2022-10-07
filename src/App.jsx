@@ -15,7 +15,7 @@ import MainBacklog from "./pages/MainBacklog";
 import Pipeline from "./pages/Pipeline";
 import Welcome from "./pages/Welcome";
 import DragNDrop from "./pages/DragNDrop";
-import Home from './pages/Home'
+import Home from "./pages/Home";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -65,16 +65,12 @@ export default function App() {
       <Navbar handleLogout={handleLogout} user={user} />
 
       <Routes>
-        <Route path="/" element={<Welcome/>}/>
+        <Route path="/" element={<Welcome />} />
         <Route
           path="/"
           element={<MainPage user={user} authenticate={authenticate} />}
         >
-
-          <Route
-            path="home"
-            element={< Home user={user}/>}
-          />
+          <Route path="home" element={<Home user={user} />} />
           <Route
             path="profile"
             element={<Profile user={user} authenticate={authenticate} />}
@@ -95,13 +91,12 @@ export default function App() {
             path="pipeline"
             element={<Pipeline user={user} authenticate={authenticate} />}
           />
-           <Route
+          <Route
             path="dragndrop"
             element={<DragNDrop user={user} authenticate={authenticate} />}
           />
         </Route>
-         
-       
+
         <Route
           path="/auth/login"
           element={<LogIn authenticate={authenticate} />}

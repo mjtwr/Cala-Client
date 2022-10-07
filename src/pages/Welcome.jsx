@@ -22,16 +22,6 @@ import { useNavigate } from "react-router-dom";
 export default function WelcomePage() {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    let token = USER_HELPERS.getUserToken()
-    if (token !== null) {
-      console.log("go to project page")
-      navigate("/projects");
-    } else {
-      navigate(PATHS.LOGINPAGE);
-    }
-  }, []);
-
   return (
     <div>
       <Welcome />
