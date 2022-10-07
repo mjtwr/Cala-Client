@@ -42,7 +42,7 @@ export default function LogIn({ authenticate }) {
       if (!res.status) {
         return setError({ message: "Invalid credentials" });
       }
-      console.log(res.data);
+      // console.log(res.data);
       USER_HELPERS.setUserToken(res.data.accessToken);
       authenticate(res.data.user);
       navigate(PATHS.HOME);

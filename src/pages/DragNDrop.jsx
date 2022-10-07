@@ -75,7 +75,6 @@ function DragNDrop() {
 
   const sprintHandleChange = (sprintId) => {
     setSprintId(sprintId);
-    console.log("SPRINT id", sprintId);
     getSprintsTaks(sprintId)
       .then((res) => {
         sortByStatus(res.data.tasks);
@@ -239,7 +238,7 @@ function DragNDrop() {
                                         ...provided.draggableProps.style,
                                       }}
                                     >
-                                      {item.title} {item.status}
+                                      {item.title} {item.type}
                                     </div>
                                   );
                                 }}

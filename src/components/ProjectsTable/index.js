@@ -53,7 +53,7 @@ const ProjectsTable = (props) => {
           </Flex>
         </div>
         <div>
-          <Grid templateColumns="repeat(5, 1fr)" gap={6}>
+          <Grid templateColumns="repeat(4, 1fr)" gap={6}>
             <GridItem w="100%" h="10" className="subtitle-grey">
               Project
             </GridItem>
@@ -63,17 +63,14 @@ const ProjectsTable = (props) => {
             <GridItem w="100%" h="10" className="subtitle-grey">
               Created
             </GridItem>
-            <GridItem w="100%" h="10" className="subtitle-grey">
-              User
-            </GridItem>
             <GridItem w="100%" h="10" className="subtitle-grey"></GridItem>
           </Grid>
           <hr />
         </div>
-        {projectList.map((project, i) => {
+        {projectList?.map((project, i) => {
           return (
             <div className="projectList" key={project._id}>
-              <Grid templateColumns="repeat(5, 1fr)" gap={6}>
+              <Grid templateColumns="repeat(4, 1fr)" gap={6}>
                 <GridItem w="100%" h="10">
                   {project.title}
                 </GridItem>
@@ -82,9 +79,6 @@ const ProjectsTable = (props) => {
                 </GridItem>
                 <GridItem w="100%" h="12">
                   {moment(project.createdAt).format("DD/MM/YYYY HH:mm")}
-                </GridItem>
-                <GridItem w="100%" h="12">
-                  {project.username}
                 </GridItem>
                 <GridItem w="100%" h="12" className="options-btn">
                   <UpdateProject

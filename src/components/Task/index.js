@@ -8,7 +8,6 @@ import FilterProject from "../FilterProject";
 
 const Task = (props) => {
   const { task, color, handleDeleteTask, sprintsList, origin } = props;
-  // console.log(sprintsList)
   const prioritiesColors = {
     high: "red",
     medium: "orange",

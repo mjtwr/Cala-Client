@@ -11,6 +11,7 @@ import {
   getAllProjects,
   deleteTask,
   moveTask,
+  getSprintsTaks,
 } from "../services/services";
 import NewSprint from "../components/NewSprint";
 import FilterProject from "../components/FilterProject";
@@ -21,6 +22,7 @@ const MainBacklog = (props) => {
   const [projectsList, setProjectsList] = useState([]);
   const [projectId, setProjectId] = useState(null);
   const [backlogId, setBacklogId] = useState("");
+  const [taskID, setTaskId] = useState([]);
 
   const getProjectData = () => {
     getSprints(projectId)
@@ -99,16 +101,20 @@ const MainBacklog = (props) => {
   };
 
   const handleMoveTask = (task, id) => {
-    console.log("receiving props main bl", task, id);
+    // console.log("receiving props main bl", task, id);
     moveTask(id, backlogId, task._id)
       .then((res) => {
         let i = backlogTasksList.findIndex((res) => res._id === task._id);
         const left = backlogTasksList.slice(0, i);
         const right = backlogTasksList.slice(i + 1);
-        setBacklogTasksList(left.concat(right));
+        setBacklogTasksList(left.concat(right))
       })
       .catch((err) => console.log(err));
   };
+  const handleMovedTask = (taskId) =>{
+    setTaskId(taskId)
+    getSprintsTaks(taskId)
+  }
 
   return (
     <Center py={8} width="100%">
@@ -154,6 +160,7 @@ const MainBacklog = (props) => {
             handleDeleteTask={handleDeleteTask}
             sprintsList={sprintsList}
             handleMoveTask={handleMoveTask}
+            handleMovedTask={handleMovedTask}
           />
         )}
       </Box>

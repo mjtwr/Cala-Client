@@ -14,14 +14,12 @@ import {
 import { FiTrash2 } from "react-icons/fi";
 
 const DeleteTask = (props) => {
-  console.log("DEL TASKS PROPS", props);
   const { feature, taskId } = props;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = React.useRef(null);
 
   const handleRemoveItem = (e) => {
     const id = e.target.getAttribute("id");
-    console.log("ID", id);
     props.handleDeleteTask(id);
   };
 

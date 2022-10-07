@@ -14,6 +14,8 @@ const handleMoveTask = ( task, id)=>{
 props.handleMoveTask(task, id)
 }
 
+
+
   return (
     <div className="backlogCard">
       <Flex mt="20px">
@@ -39,6 +41,7 @@ props.handleMoveTask(task, id)
               handleDeleteTask={handleDeleteTask}
               sprintsList={sprintsList}
               handleMoveTask={handleMoveTask}
+              // handleMovedTask={handleMovedTask}
             />
           </Box>
         );

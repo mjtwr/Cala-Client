@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { updateProject } from "../services/services";
 
 const Projects = (props) => {
+  console.log("PROPS", props)
   const [projectsList, setProjectsList] = useState([]);
 
   useEffect(() => {
@@ -66,7 +67,7 @@ const Projects = (props) => {
         handleCreateProject={handleCreateProject}
         handleUpdateProject={handleUpdateProject}
       />
-      ;
+      
     </div>
   );
 };
