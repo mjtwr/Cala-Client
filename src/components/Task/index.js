@@ -1,10 +1,11 @@
 import React from "react";
 import "./styles.css";
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Grid, GridItem, IconButton, Flex } from "@chakra-ui/react";
 import EditTask from "../EditTask";
 import DeleteTask from "../DeleteTask";
 import { Tag } from "@chakra-ui/react";
 import FilterProject from "../FilterProject";
+import { FiArrowUp } from "react-icons/fi";
 
 const Task = (props) => {
   const { task, color, handleDeleteTask, sprintsList, origin } = props;
@@ -37,10 +38,23 @@ const Task = (props) => {
         </GridItem>
         <GridItem w="100%">
           {origin === "backlog" ? (
-            <FilterProject
-              projectsList={sprintsList}
-              handleChange={handleChange}
-            />
+            <Flex>
+              <div>
+                <FilterProject
+                  projectsList={sprintsList}
+                  handleChange={handleChange}
+                />
+              </div>
+              <div>
+                <IconButton
+                  variant="outline"
+                  colorScheme="purple"
+                  aria-label="Call Sage"
+                  size="sm"
+                  icon={<FiArrowUp />}
+                />
+              </div>
+            </Flex>
           ) : (
             <span></span>
           )}
