@@ -1,39 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-import { getSprintsTaks, getAllProjects } from "../services/services";
+import { Box } from "@chakra-ui/react";
+import {
+  getSprintsTaks,
+  getAllProjects,
+  getSprints,
+} from "../services/services";
+import FilterProject from "../components/FilterProject";
 import { v4 as uuidv4 } from "uuid";
 uuidv4();
 
 function DragNDrop() {
   const [columns, setColumns] = useState([]);
-  const [tasks, setTasks] = useState([]);
   const [todoArr, setTodoArr] = useState([]);
   const [inProgressArr, setInProgressArr] = useState([]);
   const [testingArr, setTestingArr] = useState([]);
   const [doneArr, setDoneArr] = useState([]);
   const [projectsList, setProjectsList] = useState([]);
+  const [projectId, setProjectId] = useState([]);
+  const [sprintId, setSprintId] = useState([]);
+  const [sprintsList, setSprintsList] = useState([]);
 
-  //   const [taskStatus, setTaskStatus] = useState(itemsFromBackend);
-  //   const changeTaskStatus = useCallback(
-  //     (id, status) => {
-  //       let task = tasks.find((task) => task._id === id);
-  //       const taskIndex = tasks.indexOf(task);
-  //       task = { ...task, status };
-  //       let newTasks = update(tasks, {
-  //         [taskIndex]: { $set: task },
-  //       });
-  //       setTaskStatus(newTasks);
-  //     },
-  //     [tasks]
-  //   );
-  const changeTaskStatus = (id, status) => {
-    console.log(id, status);
-  };
-
+  const changeTaskStatus = (id, status) => {};
 
   useEffect(() => {
     getAllProjects()
-      .then((response) => setProjectsList(response.data))
+      .then((res) => {
+        setProjectsList(res.data);
+      })
       .catch((err) => console.log(err));
   }, []);
 
@@ -65,14 +59,29 @@ function DragNDrop() {
   }
 
   useEffect(() => {
-    function fetchTasks() {
-      getSprintsTaks("633e14bda590e1aeaaf66bee").then((res) => {
-        sortByStatus(res.data.tasks);
-        // setTasks(res.data.tasks);
-      });
-    }
-    fetchTasks();
+    getAllProjects()
+      .then((response) => setProjectsList(response.data))
+      .catch((err) => console.log(err));
   }, []);
+
+  const handleChange = (projectId) => {
+    setProjectId(projectId);
+    getSprints(projectId)
+      .then((res) => {
+        setSprintsList(res.data.sprints);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const sprintHandleChange = (sprintId) => {
+    setSprintId(sprintId);
+    console.log("SPRINT id", sprintId);
+    getSprintsTaks(sprintId)
+      .then((res) => {
+        sortByStatus(res.data.tasks);
+      })
+      .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     const columnsFromBackend = {
@@ -97,7 +106,7 @@ function DragNDrop() {
   }, [doneArr, todoArr, inProgressArr, testingArr]);
 
   const onDragEnd = (result, columns, setColumns) => {
-    console.log(result, columns, setColumns);
+    console.log(result, columns);
     if (!result.destination) return;
     const { source, destination } = result;
     if (source.droppableId !== destination.droppableId) {
@@ -118,6 +127,12 @@ function DragNDrop() {
           items: destItems,
         },
       });
+      //   let status = "todo";
+      //   updateTaskStatus(sprintId, result.draggableId, status)
+      //     .then((res) => {
+      //       console.log("RESUL TASK UPODATE", res);
+      //     })
+      //     .catch((err) => console.log(err));
     } else {
       const column = columns[source.droppableId];
       const copiedItems = [...column.items];
@@ -135,6 +150,21 @@ function DragNDrop() {
 
   return (
     <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
+      <Box p="4" display="flex" flexDir="column">
+        <div className="subtitle">Select your Project</div>
+        <div>
+          <FilterProject
+            projectsList={projectsList}
+            handleChange={handleChange}
+          />
+        </div>
+        <div>
+          <FilterProject
+            projectsList={sprintsList}
+            handleChange={sprintHandleChange}
+          />
+        </div>
+      </Box>
       <DragDropContext
         onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
       >
@@ -167,7 +197,6 @@ function DragNDrop() {
                         }}
                       >
                         {column.items.map((item, index) => {
-                          console.log("item", item);
                           return (
                             <Draggable
                               key={item._id}

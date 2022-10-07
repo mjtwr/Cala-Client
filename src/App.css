@@ -8,7 +8,8 @@
 }
 
 .App-header {
-  background-color: #553C9A;
+  /* background-color: #44337a; */
+  background-image: url("https://img.freepik.com/vector-gratis/fondo-abstracto-aurora-boreal-tonos-morados_23-2148273711.jpg?w=1380&t=st=1665102447~exp=1665103047~hmac=58bd1284fcfd4b4dd47ab9d9f56416676ba41ddd6990d6f46d4b07e271e4879c");
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -19,15 +20,15 @@
 }
 
 .App-link {
-  color: #9F7AEA;
+  color: #9f7aea;
 }
-.lilac-bg{
-  background-color: #FAF5FF;
+.lilac-bg {
+  background-color: #faf5ff;
   height: 100vh;
-  background-image: '../public/covercala.png';
+  background-image: "../public/covercala.png";
   background-size: cover;
 }
-.taskContent{
+.taskContent {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -38,20 +39,20 @@
   align-content: center;
   padding-top: 20px;
 }
-.insightContent{
+.insightContent {
   background-color: white;
   border-radius: 5px;
   margin-left: 50px;
   margin-right: 50px;
   margin-top: 15px;
 }
-.insightsCard{
+.insightsCard {
   display: flex;
   text-align: center;
   align-items: center;
 }
-.feature{
-  color: #553C9A;
+.feature {
+  color: #44337a;
   margin-top: 30px;
   margin-bottom: 30px;
   margin-left: 50px;
@@ -59,8 +60,8 @@
   font-weight: bolder;
   text-align: left;
 }
-.subtitle{
-  color: #553C9A;
+.subtitle {
+  color: #44337a;
   margin-top: 30px;
   margin-bottom: 10px;
   margin-left: 50px;
@@ -68,24 +69,24 @@
   font-weight: bolder;
   text-align: left;
 }
-.subtitle-grey{
+.subtitle-grey {
   color: #555555;
   font-size: x-large;
   font-weight: bolder;
   text-align: center;
 }
-.options{
+.options {
   justify-content: space-between;
 }
-.pipelineCards{
+.pipelineCards {
   display: flex;
   flex-direction: row;
   width: 25%;
 }
-.projectList{
+.projectList {
   display: flex;
   flex-direction: column;
-  background-color: #FAF5FF;
+  background-color: #faf5ff;
   border-radius: 5px;
   margin-left: 30px;
   margin-right: 30px;
@@ -98,19 +99,19 @@
   font-size: large;
   padding-top: 15px;
 }
-.subtitle-grey{
+.subtitle-grey {
   color: #555555;
   font-size: x-large;
   font-weight: bolder;
   text-align: center;
 }
-.options-btn{
+.options-btn {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   padding-right: 10px;
 }
-.modalContent{
+.modalContent {
   display: flex;
   flex-wrap: wrap;
 }

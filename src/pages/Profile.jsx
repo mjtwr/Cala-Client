@@ -26,7 +26,7 @@ const Profile = (props) => {
           h={"120px"}
           w={"full"}
           src={
-            "https://images.unsplash.com/photo-1612865547334-09cb8cb455da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+            "https://img.freepik.com/vector-gratis/fondo-abstracto-aurora-boreal-tonos-morados_23-2148273711.jpg?w=1380&t=st=1665102447~exp=1665103047~hmac=58bd1284fcfd4b4dd47ab9d9f56416676ba41ddd6990d6f46d4b07e271e4879c"
           }
           objectFit={"cover"}
         />
@@ -53,7 +53,7 @@ const Profile = (props) => {
             <Stack spacing={0} align={"center"}>
               <Text fontWeight={600}># of projects</Text>
               {/* useEffect para recibir los datos */}
-              {/* <Text fontSize={"sm"} color={"gray.500"}>
+          {/* <Text fontSize={"sm"} color={"gray.500"}>
                 Projects
               </Text>
             </Stack>

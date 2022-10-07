@@ -21,13 +21,14 @@ import { FiPlus } from "react-icons/fi";
 export default function CreateTask(props) {
   // console.log("RECEIVING PROPS CREATETASK:", props)
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [task, setTask] = useState("task");
   const initialRef = React.useRef(null);
   const [form, setForm] = useState({
     description: "",
     title: "",
-    status: "",
-    type: "",
-    priority: "",
+    status: "todo",
+    type: "task",
+    priority: "low",
   });
   const { title, description, status, type, priority } = form;
   // TODO: add validations
@@ -40,9 +41,7 @@ export default function CreateTask(props) {
 
   function handleFormSubmission(event) {
     event.preventDefault();
-    // console.log("HANDLE FORM SUBMISSION",title, description, status, type, priority);
     props.handleCreateTask({ title, status, description, type, priority });
-    // console.log(props);
   }
 
   return (

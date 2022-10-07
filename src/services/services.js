@@ -115,12 +115,18 @@ export function updateTask(taskId) {
     .then(successStatus)
     .catch(internalServerError);
 }
-
-//Update Sprint Task
-// /sprints/633c6bcaaf609868ffca39ff/tasks?backlogId=633b31fb2bee9f56d96b71fc
-export function updateSprintTask(sprintId, taskId) {
+export function getTask(taskId) {
   return api
-    .put(`/sprints/${sprintId}/tasks?backlogId=${taskId}`)
+    .get(`/tasks/${taskId}`)
+    .then(successStatus)
+    .catch(internalServerError);
+}
+
+//Update  Task Status
+// /sprints/sprintId/tasks/taskId
+export function updateTaskStatus(sprintId, taskId, status) {
+  return api
+    .put(`/sprints/${sprintId}/tasks/${taskId}`, { status: status })
     .then(successStatus)
     .catch(internalServerError);
 }

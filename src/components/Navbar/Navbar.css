@@ -3,7 +3,9 @@
   padding: 1em;
   justify-content: space-between;
   flex-wrap: wrap;
-  background: #44337A;
+  background-image: url("https://img.freepik.com/vector-gratis/fondo-abstracto-aurora-boreal-tonos-morados_23-2148273711.jpg?w=1380&t=st=1665102447~exp=1665103047~hmac=58bd1284fcfd4b4dd47ab9d9f56416676ba41ddd6990d6f46d4b07e271e4879c");
+background-size: cover;
+  /* background: #44337A; */
   font-weight: 600;
 }
 
