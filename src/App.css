@@ -8,7 +8,6 @@
 }
 
 .App-header {
-  /* background-color: #44337a; */
   background-image: url("../public/calabg.jpg");
   min-height: 100vh;
   display: flex;
@@ -47,9 +46,7 @@
   margin-top: 15px;
 }
 .insightsCard {
-  display: flex;
-  text-align: center;
-  align-items: center;
+  background-color: "white";
 }
 .feature {
   color: #44337a;
@@ -69,6 +66,37 @@
   font-weight: bolder;
   text-align: left;
 }
+.comingSoon {
+  color: #d4b4f7;
+  background-color: #44337a;
+  border-radius: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 50px;
+  font-size: x-large;
+  font-weight: bolder;
+  text-align: center;
+}
+.backlogSummary {
+  background-color: aliceblue;
+  border-radius: 15px;
+  margin-left: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.summarybacklogCard{
+background-color: #E9D8FD;
+border-radius: 10px;
+padding-bottom: 15px;
+display: flex;
+justify-content: flex-start;
+}
+.summaryCard {
+  justify-content: center;
+  align-items: center;
+}
+
 .subtitleDnd {
   color: #44337a;
   margin-top: 30px;

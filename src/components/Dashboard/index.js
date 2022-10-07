@@ -13,10 +13,11 @@ import { FiSearch } from "react-icons/fi";
 
 const Dashboard = () => {
   return (
-    <div className="backlogCard" w="70%">
+    <div className="summarybacklogCard">
       <Flex>
         <Box p="4">
           <div>
+            <p className="comingSoon">Coming Soon...</p>
             <h1 className="feature">Dashboard</h1>
           </div>
           <Flex>
@@ -33,55 +34,57 @@ const Dashboard = () => {
               <h1 className="subtitle">Backlog Summary</h1>
             </div>
           </Box>
-          <Flex>
-            {/* INFO CARDS */}
-            <div className="insightsCard">
-              <div className="insightContent">
-                <Grid
-                  templateColumns="repeat(5, 1fr)"
-                  gap={8}
-                  columns={3}
-                  spacing={10}
-                >
-                  <GridItem w="100%" h="20">
-                    #BUGS
-                  </GridItem>
-                </Grid>
+          {/* SUMMARY CARDS */}
+          <div className="backlogSummary">
+            <Grid templateColumns="repeat(3, 1fr)" gap={6} h="200">
+              <div className="backlogSummary">
+                <GridItem w="100%">
+                  <p className="subtitle-grey">9 USER STORIES</p>
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/2621/2621155.png"
+                    alt="bug"
+                    width="100px"
+                  />
+                </GridItem>
               </div>
-              <div className="insightContent">
-                <Grid
-                  templateColumns="repeat(5, 1fr)"
-                  gap={8}
-                  columns={3}
-                  spacing={10}
-                >
-                  <GridItem w="100%" h="20">
-                    #BUGS
-                  </GridItem>
-                </Grid>
+              <div className="backlogSummary">
+                <GridItem w="100%">
+                  <p className="subtitle-grey"> 13 TASKS</p>
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/1390/1390708.png"
+                    alt="bug"
+                    width="100px"
+                  />
+                </GridItem>
               </div>
-              <div className="insightContent">
-                <Grid
-                  templateColumns="repeat(5, 1fr)"
-                  gap={8}
-                  columns={3}
-                  spacing={10}
-                >
-                  <GridItem w="100%" h="20">
-                    #BUGS
-                  </GridItem>
-                </Grid>
+              <div className="backlogSummary">
+                <GridItem w="100%">
+                  <p className="subtitle-grey"> 5 BUGS</p>
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/3540/3540937.png"
+                    alt="bug"
+                    width="100px"
+                  />
+                </GridItem>
               </div>
-            </div>
-          </Flex>
+            </Grid>
+          </div>
+          {/* SUMMARY CARDS */}
+
           <Box>
             <div>
               <h1 className="subtitle">Sprint Progress</h1>
             </div>
           </Box>
-          <Flex>
-            <div className="insightContent">#DOUGHNUT CHART</div>
-          </Flex>
+        
+            <div>
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/3176/3176353.png"
+                alt="doughnutchart"
+                width="300"
+              />
+            </div>
+        
         </Box>
       </Flex>
     </div>

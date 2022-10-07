@@ -16,14 +16,13 @@ const Pipeline = (props) => {
         p={3}
         ml="0px"
         mr="30px"
-        height="100%"
         bg={useColorModeValue("white", "gray.800")}
         boxShadow={"2xl"}
         rounded={"lg"}
       >
         <DragNDrop />
       </Box>
-   </Center>
+    </Center>
   );
 };
 
