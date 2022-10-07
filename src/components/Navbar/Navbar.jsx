@@ -13,18 +13,19 @@ const Navbar = (props) => {
       </Link>
 
       <div className="nav__authLinks">
-        {/* ESTE ES EL MENU QUE SE MUESTRA CUANDO EL USUARIO INICIO SESION */}
         {props.user ? (
           <>
-            <Button
-              className="button__submit"
-              onClick={props.handleLogout}
-              rightIcon={<FiLogOut />}
-              colorScheme="purple"
-              variant="outline"
-            >
-              LOGOUT
-            </Button>
+            <Link to="/">
+              <Button
+                className="button__submit"
+                onClick={props.handleLogout}
+                rightIcon={<FiLogOut />}
+                colorScheme="purple"
+                variant="outline"
+              >
+                LOGOUT
+              </Button>
+            </Link>
           </>
         ) : (
           <>

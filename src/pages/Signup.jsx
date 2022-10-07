@@ -3,6 +3,7 @@ import { signup } from "../services/auth";
 import { useNavigate } from "react-router-dom";
 import "./auth.css";
 import * as PATHS from "../utils/paths";
+import emailjs from "emailjs-com";
 import * as USER_HELPERS from "../utils/userToken";
 import {
   FormControl,
@@ -28,11 +29,27 @@ export default function Signup({ authenticate }) {
   const { username, email, password } = form;
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const [reload, setReload] = useState();
 
-  // function PasswordInput() {
-  //   const [show, setShow] = React.useState(false)
-  //   const handleClick = () => setShow(!show)
-  // }
+  const sendEmail = (e) => {
+    // e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_dmsafj4",
+        "template_calaio03",
+        form.current,
+        "FCPG4WLuROisrtT9y"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -57,7 +74,8 @@ export default function Signup({ authenticate }) {
       // successful signup
       USER_HELPERS.setUserToken(res.data.accessToken);
       authenticate(res.data.user);
-      navigate(PATHS.HOMEPAGE);
+      sendEmail();
+      navigate(PATHS.PROJECTS);
     });
   }
 
@@ -79,7 +97,11 @@ export default function Signup({ authenticate }) {
             <Heading color="purple.700" mt="20px" mb="30px">
               Sign Up
             </Heading>
-            <form onSubmit={handleFormSubmission} className="auth__form">
+            <form
+              onSubmit={handleFormSubmission}
+              ref={form}
+              className="auth__form"
+            >
               <FormControl isRequired>
                 <FormLabel htmlFor="input-email" color="purple.700">
                   Email address

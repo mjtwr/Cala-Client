@@ -84,7 +84,7 @@ const ProjectsTable = (props) => {
                   {moment(project.createdAt).format("DD/MM/YYYY HH:mm")}
                 </GridItem>
                 <GridItem w="100%" h="12">
-                  {project.user}
+                  {project.username}
                 </GridItem>
                 <GridItem w="100%" h="12" className="options-btn">
                   <UpdateProject
