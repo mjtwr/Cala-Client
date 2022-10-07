@@ -5,10 +5,14 @@ import "./styles.css";
 import CreateTask from "../CreateTask";
 
 const Backlog = (props) => {
-  const { backlogTasksList, handleDeleteTask } = props;
+  const { backlogTasksList, handleDeleteTask, sprintsList } = props;
   const handleCreateTask = (newTask) => {
     props.handleCreateTask(newTask);
   };
+
+const handleMoveTask = ( task, id)=>{
+props.handleMoveTask(task, id)
+}
 
   return (
     <div className="backlogCard">
@@ -33,6 +37,8 @@ const Backlog = (props) => {
               task={task}
               color="white"
               handleDeleteTask={handleDeleteTask}
+              sprintsList={sprintsList}
+              handleMoveTask={handleMoveTask}
             />
           </Box>
         );

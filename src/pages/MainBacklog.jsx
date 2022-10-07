@@ -10,6 +10,7 @@ import {
   deleteSprint,
   getAllProjects,
   deleteTask,
+  moveTask,
 } from "../services/services";
 import NewSprint from "../components/NewSprint";
 import FilterProject from "../components/FilterProject";
@@ -97,6 +98,18 @@ const MainBacklog = (props) => {
     setProjectId(idProject);
   };
 
+  const handleMoveTask = (task, id) => {
+    console.log("receiving props main bl", task, id);
+    moveTask(id, backlogId, task._id)
+      .then((res) => {
+        let i = backlogTasksList.findIndex((res) => res._id === task._id);
+        const left = backlogTasksList.slice(0, i);
+        const right = backlogTasksList.slice(i + 1);
+        setBacklogTasksList(left.concat(right));
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <Center py={8} width="100%">
       <Box
@@ -139,6 +152,8 @@ const MainBacklog = (props) => {
             backlogTasksList={backlogTasksList}
             handleCreateTask={handleCreateTask}
             handleDeleteTask={handleDeleteTask}
+            sprintsList={sprintsList}
+            handleMoveTask={handleMoveTask}
           />
         )}
       </Box>

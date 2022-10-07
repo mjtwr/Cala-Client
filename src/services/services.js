@@ -142,9 +142,11 @@ export function deleteTask(taskId) {
 
 //Move task from backlog to sprint
 ///sprints/633c6bcaaf609868ffca39ff/tasks?backlogId=633b31fb2bee9f56d96b71fc
-export function moveTask(sprintId, backlogId) {
+export function moveTask(sprintId, backlogId, taskId) {
   return api
-    .put(`/sprints/${sprintId}/tasks?backlogId=${backlogId}`)
+    .put(`/sprints/${sprintId}/tasks?backlogId=${backlogId}`, {
+      taskId: taskId,
+    })
     .then(successStatus)
     .catch(internalServerError);
 }
