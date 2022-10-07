@@ -150,10 +150,10 @@ function DragNDrop() {
 
   return (
     <div>
-      <Flex p="4"  display='flex' justifyContent='space-around' w='50%'>
-        <div flexDirection="column" >
-          <div  className="subtitleDnd" textAlign="center">
-            Select your Project          
+      <Flex p="4" display="flex" justifyContent="space-around" w="50%">
+        <div flexDirection="column">
+          <div className="subtitleDnd" textAlign="center">
+            Select your Project
           </div>
           <div>
             <FilterProject
@@ -162,8 +162,14 @@ function DragNDrop() {
             />
           </div>
         </div>
-        <div padding='20px'>
-          <div mr="10px" mt="-20px" display='flex'  className="subtitleDnd" flexDirection='column'>
+        <div padding="20px">
+          <div
+            mr="10px"
+            mt="-20px"
+            display="flex"
+            className="subtitleDnd"
+            flexDirection="column"
+          >
             Select your Sprint
           </div>
           <div>
@@ -227,8 +233,8 @@ function DragNDrop() {
                                         margin: "0 0 8px 0",
                                         minHeight: "50px",
                                         backgroundColor: snapshot.isDragging
-                                          ? "#263B4A"
-                                          : "#456C86",
+                                          ? "#553C9A"
+                                          : "#805AD5",
                                         color: "white",
                                         ...provided.draggableProps.style,
                                       }}
