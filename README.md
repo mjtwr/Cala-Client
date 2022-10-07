@@ -1,7 +1,7 @@
 # Getting Started with Cala
 
-Cala 
-
+Cala is a Scrum tool developed to help you and your team accomplish your goals
+with help of simple and easy to use features and views.
 
 ## Available Scripts
 
