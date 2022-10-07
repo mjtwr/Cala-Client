@@ -75,7 +75,7 @@ export default function Signup({ authenticate }) {
       USER_HELPERS.setUserToken(res.data.accessToken);
       authenticate(res.data.user);
       sendEmail();
-      navigate(PATHS.PROJECTS);
+      navigate(PATHS.HOMEPAGE);
     });
   }
 

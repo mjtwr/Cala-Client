@@ -37,6 +37,7 @@ export function createProject(project) {
 }
 
 export function getAllProjects() {
+  console.log(USER_HELPERS.getUserToken())
   return api.get("/projects").then(successStatus).catch(internalServerError);
 }
 

@@ -15,6 +15,7 @@ import MainBacklog from "./pages/MainBacklog";
 import Pipeline from "./pages/Pipeline";
 import Welcome from "./pages/Welcome";
 import DragNDrop from "./pages/DragNDrop";
+import Home from './pages/Home'
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -69,6 +70,11 @@ export default function App() {
           path="/"
           element={<MainPage user={user} authenticate={authenticate} />}
         >
+
+          <Route
+            path="home"
+            element={< Home user={user}/>}
+          />
           <Route
             path="profile"
             element={<Profile user={user} authenticate={authenticate} />}

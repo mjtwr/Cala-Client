@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-import { Box } from "@chakra-ui/react";
+import { Box, Stack, Flex, Spacer } from "@chakra-ui/react";
 import {
   getSprintsTaks,
   getAllProjects,
@@ -149,95 +149,108 @@ function DragNDrop() {
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
-      <Box p="4" display="flex" flexDir="column">
-        <div className="subtitle">Select your Project</div>
-        <div>
-          <FilterProject
-            projectsList={projectsList}
-            handleChange={handleChange}
-          />
+    <div>
+      <Flex p="4"  display='flex' justifyContent='space-around' w='50%'>
+        <div flexDirection="column" >
+          <div  className="subtitleDnd" textAlign="center">
+            Select your Project          
+          </div>
+          <div>
+            <FilterProject
+              projectsList={projectsList}
+              handleChange={handleChange}
+            />
+          </div>
         </div>
-        <div>
-          <FilterProject
-            projectsList={sprintsList}
-            handleChange={sprintHandleChange}
-          />
+        <div padding='20px'>
+          <div mr="10px" mt="-20px" display='flex'  className="subtitleDnd" flexDirection='column'>
+            Select your Sprint
+          </div>
+          <div>
+            <FilterProject
+              projectsList={sprintsList}
+              handleChange={sprintHandleChange}
+            />
+          </div>
         </div>
-      </Box>
-      <DragDropContext
-        onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
-      >
-        {Object.entries(columns).map(([columnId, column], index) => {
-          return (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-              key={columnId}
-              changeTaskStatus={changeTaskStatus}
-            >
-              <h2>{column.name}</h2>
-              <div style={{ margin: 8 }} changeTaskStatus>
-                <Droppable droppableId={columnId} key={columnId}>
-                  {(provided, snapshot) => {
-                    return (
-                      <div
-                        {...provided.droppableProps}
-                        ref={provided.innerRef}
-                        style={{
-                          background: snapshot.isDraggingOver
-                            ? "lightblue"
-                            : "lightgrey",
-                          padding: 4,
-                          width: 250,
-                          minHeight: 500,
-                        }}
-                      >
-                        {column.items.map((item, index) => {
-                          return (
-                            <Draggable
-                              key={item._id}
-                              draggableId={item._id}
-                              index={index}
-                            >
-                              {(provided, snapshot) => {
-                                return (
-                                  <div
-                                    ref={provided.innerRef}
-                                    {...provided.draggableProps}
-                                    {...provided.dragHandleProps}
-                                    style={{
-                                      userSelect: "none",
-                                      padding: 16,
-                                      margin: "0 0 8px 0",
-                                      minHeight: "50px",
-                                      backgroundColor: snapshot.isDragging
-                                        ? "#263B4A"
-                                        : "#456C86",
-                                      color: "white",
-                                      ...provided.draggableProps.style,
-                                    }}
-                                  >
-                                    {item.title} {item.status}
-                                  </div>
-                                );
-                              }}
-                            </Draggable>
-                          );
-                        })}
-                        {provided.placeholder}
-                      </div>
-                    );
-                  }}
-                </Droppable>
+      </Flex>
+      <Flex>
+        <DragDropContext
+          w="90vw"
+          onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
+        >
+          {Object.entries(columns).map(([columnId, column], index) => {
+            return (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+                key={columnId}
+                changeTaskStatus={changeTaskStatus}
+              >
+                <h2 className="subtitleDnd">{column.name}</h2>
+                <div style={{ margin: 8 }} changeTaskStatus>
+                  <Droppable droppableId={columnId} key={columnId}>
+                    {(provided, snapshot) => {
+                      return (
+                        <div
+                          {...provided.droppableProps}
+                          ref={provided.innerRef}
+                          style={{
+                            borderRadius: 15,
+                            background: snapshot.isDraggingOver
+                              ? "#E9D8FD"
+                              : "#EDF2F7",
+                            padding: 4,
+                            width: 250,
+                            minHeight: 500,
+                          }}
+                        >
+                          {column.items.map((item, index) => {
+                            return (
+                              <Draggable
+                                key={item._id}
+                                draggableId={item._id}
+                                index={index}
+                              >
+                                {(provided, snapshot) => {
+                                  return (
+                                    <div
+                                      ref={provided.innerRef}
+                                      {...provided.draggableProps}
+                                      {...provided.dragHandleProps}
+                                      style={{
+                                        userSelect: "none",
+                                        padding: 16,
+                                        margin: "0 0 8px 0",
+                                        minHeight: "50px",
+                                        backgroundColor: snapshot.isDragging
+                                          ? "#263B4A"
+                                          : "#456C86",
+                                        color: "white",
+                                        ...provided.draggableProps.style,
+                                      }}
+                                    >
+                                      {item.title} {item.status}
+                                    </div>
+                                  );
+                                }}
+                              </Draggable>
+                            );
+                          })}
+                          {provided.placeholder}
+                        </div>
+                      );
+                    }}
+                  </Droppable>
+                </div>
               </div>
-            </div>
-          );
-        })}
-      </DragDropContext>
+            );
+          })}
+        </DragDropContext>
+      </Flex>
     </div>
   );
 }

@@ -69,6 +69,14 @@
   font-weight: bolder;
   text-align: left;
 }
+.subtitleDnd {
+  color: #44337a;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: x-large;
+  font-weight: bolder;
+  text-align: left;
+}
 .subtitle-grey {
   color: #555555;
   font-size: x-large;

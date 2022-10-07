@@ -42,7 +42,7 @@ export default function Welcome() {
           <Stack direction={"row"}>
             <Link to={"/auth/signup"}>
               <Button
-                bg={"#44337A"}
+                bg={"#553C9A"}
                 color={"white"}
                 _hover={{ bg: "purple.500" }}
               >
