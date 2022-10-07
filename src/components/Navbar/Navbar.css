@@ -1,26 +1,24 @@
-.navbar{
+.navbar {
   display: flex;
   padding: 1em;
   justify-content: space-between;
   flex-wrap: wrap;
-  background-image: url("https://img.freepik.com/vector-gratis/fondo-abstracto-aurora-boreal-tonos-morados_23-2148273711.jpg?w=1380&t=st=1665102447~exp=1665103047~hmac=58bd1284fcfd4b4dd47ab9d9f56416676ba41ddd6990d6f46d4b07e271e4879c");
-background-size: cover;
-  /* background: #44337A; */
+  background-image: url("../../../public/calabg.jpg");
+  background-size: cover;
   font-weight: 600;
 }
 
 .nav__projectName {
-  color: #E9D8FD;
+  color: #e9d8fd;
   text-decoration: none;
 }
 
 .authLink {
-  color: #44337A;
+  color: #44337a;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
 }
 
-
 .authLink:hover {
-  color: #805AD5;
+  color: #805ad5;
 }

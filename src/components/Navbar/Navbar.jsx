@@ -9,7 +9,10 @@ const Navbar = (props) => {
   return (
     <nav className="navbar">
       <Link to={PATHS.HOMEPAGE} className="nav__projectName">
-        <img src="'../../logocalaai-light.png" alt="Cala App Logo" />
+        <img
+          src="https://res.cloudinary.com/adoptapet/image/upload/v1665132031/logocalaai-light_y9zjg0.png"
+          alt="Cala App Logo"
+        />
       </Link>
 
       <div className="nav__authLinks">
