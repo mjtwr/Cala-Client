@@ -9,7 +9,7 @@
 
 .App-header {
   /* background-color: #44337a; */
-  background-image: url('../public/2808726.jpg');
+  background-image: url("../public/calabg.jpg");
   min-height: 100vh;
   display: flex;
   flex-direction: column;

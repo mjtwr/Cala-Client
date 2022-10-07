@@ -1,37 +1,37 @@
 import {
   Stack,
   Flex,
-  Button,
   Text,
   VStack,
   Heading,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import './styles.css'
 
 export default function Welcome() {
   return (
-    <Flex w={"full"} h={"100vh"}>
+    <Flex w={"100vh"} h={"90vh"} >
       <VStack
         w={"full"}
         justify={"center"}
-        px={useBreakpointValue({ base: 4, md: 8 })}
-        bgGradient={"linear(to-r, blackAlpha.600, transparent)"}
+        px={useBreakpointValue({ base: 2, md: 10 })}
+        bgGradient={"linear(to-r, #E9D8FD, transparent)"}
+
       >
         <Stack maxW={"2xl"} align={"flex-start"} spacing={6}>
-          <Heading color="white" size="4xl">
+          <Heading color="purple.700" size="4xl" justifyContent='left'>
             Welcome to Cala!
           </Heading>
-          <Text
-            color={"white"}
+          <Text justifyContent='left'
+            color={"purple.700"}
             fontWeight={700}
             lineHeight={1.2}
             fontSize={useBreakpointValue({ base: "3xl", md: "4xl" })}
           >
-            Lets's get started, and create our first project.
+            Lets's get started, and create your first project.
           </Text>
           <Text
-            color={"white"}
+            color={"purple.500"}
             fontWeight={400}
             lineHeight={1.2}
             fontSize={useBreakpointValue({ base: "3xl", md: "4xl" })}
